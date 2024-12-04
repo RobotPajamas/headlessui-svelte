@@ -1,0 +1,8 @@
+{
+    "fmt": {
+        "indentWidth": 2,
+        "include": ["src/"],
+        "lineWidth": 100
+    },
+    "unstable": ["fmt-component"]
+}

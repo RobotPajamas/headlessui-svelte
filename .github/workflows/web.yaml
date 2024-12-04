@@ -1,0 +1,66 @@
+# Based on https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#caching-packages-data
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/web.yaml"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/web.yaml"
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: 22.x
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Sometimes actions go out of control, and end up taking 6 hours - capping
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # We use Deno for linting/formatting - maybe swapping to oxc when they have a formatter, or Deno when I'm more comfortable building with it
+      - name: Install Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: "pnpm"
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      # - name: Setup pnpm cache
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pnpm-store-
+
+      - name: Install
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Check
+        run: pnpm check
+
+      - name: Test
+        run: pnpm test:unit
