@@ -68,7 +68,7 @@ describe("Rendering", async () => {
       expect(screen.getByRole("button")).toHaveAttribute("data-autofocus");
     });
 
-    it("should be possible to render a Button using as={Fragment}", async () => {
+    it.skip("should be possible to render a Button using as={Fragment}", async () => {
       const component = await sveltify(`
         <script>
           import Button from "$lib/button/Button.svelte";

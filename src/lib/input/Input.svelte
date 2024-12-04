@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Component, Snippet } from "svelte";
+  import { useId } from "../../hooks/use-id";
 
   type Props = {
     /** The element or component the input should render as. */
@@ -27,6 +28,7 @@
   };
 
   let {
+    id = `headlessui-input-${useId()}`,
     as = "input",
     autofocus = false,
     disabled = false,
@@ -36,6 +38,7 @@
   }: Props & Record<string, any> = $props();
 
   let ourProps = {
+    id,
     autofocus,
     disabled,
     "aria-invalid": invalid, // ? "" : undefined,
@@ -43,7 +46,8 @@
     // "aria-describedby": describedBy,
   };
 
-  let dataAttributes = {
+  // TODO: Utility function to create this
+  let dataAttributes: DataAttributes<SnippetProps> = {
     "data-autofocus": autofocus,
     "data-disabled": disabled,
     "data-focus": invalid,

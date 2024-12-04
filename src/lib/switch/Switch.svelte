@@ -2,6 +2,7 @@
   import type { Component, Snippet } from "svelte";
   import {} from "svelte/compiler";
   import { resolveButtonType } from "../../utils/resolve-button-type";
+  import { useId } from "../../hooks/use-id";
 
   type Props = {
     /** The element or component the Switch should render as. */
@@ -49,6 +50,7 @@
   };
 
   let {
+    id = `headlessui-switch-${useId()}`,
     as = "button",
     // checked = $bindable(false),
     checked = false,
@@ -79,6 +81,7 @@
   }
 
   let ourProps = {
+    id,
     role: "switch",
     tabindex: tabIndex === -1 ? 0 : tabIndex,
     type: resolveButtonType({ type, as }),
@@ -92,16 +95,6 @@
     onkeyup,
   };
 
-  let dataAttributes = {
-    "data-active": false,
-    "data-autofocus": false,
-    "data-changing": false,
-    "data-checked": checked,
-    "data-disabled": disabled,
-    "data-focus": false,
-    "data-hover": false,
-  };
-
   // TODO: Make these real values
   let snippetProps: SnippetProps = {
     active: false,
@@ -111,6 +104,17 @@
     disabled: false,
     focus: false,
     hover: false,
+  };
+
+  // TODO: Utility function to create this
+  let dataAttributes: DataAttributes<SnippetProps> = {
+    "data-active": false,
+    "data-autofocus": false,
+    "data-changing": false,
+    "data-checked": checked,
+    "data-disabled": disabled,
+    "data-focus": false,
+    "data-hover": false,
   };
 </script>
 

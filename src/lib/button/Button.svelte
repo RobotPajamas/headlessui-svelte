@@ -11,7 +11,6 @@
     /** The button type. */
     type?: string;
     children?: Snippet<[SnippetProps]>;
-    // class?
   };
 
   /** The SnippetProps also live on the <Button> component as data attributes (e.g. data-active, data-hover, ...) */
@@ -49,20 +48,21 @@
     type,
   };
 
-  let dataAttributes = {
-    "data-active": active,
-    "data-autofocus": autofocus,
-    "data-disabled": disabled,
-    "data-focus": focus,
-    "data-hover": hover,
-  };
-
   let snippetProps: SnippetProps = {
     active,
     autofocus,
     disabled,
     focus,
     hover,
+  };
+
+  // TODO: Utility function to create this
+  let dataAttributes: DataAttributes<SnippetProps> = {
+    "data-active": active,
+    "data-autofocus": autofocus,
+    "data-disabled": disabled,
+    "data-focus": focus,
+    "data-hover": hover,
   };
 </script>
 
