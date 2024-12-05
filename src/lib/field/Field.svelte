@@ -2,6 +2,11 @@
   import type { Component, Snippet } from "svelte";
   import { useId } from "../../hooks/use-id";
 
+  import { getAllContexts, getContext } from "svelte";
+
+  const contexts = getAllContexts();
+  console.log(contexts);
+
   type Props = {
     /** The element or component the checkbox should render as. */
     as?: string | Component;
@@ -15,10 +20,12 @@
     disabled?: boolean;
   };
 
+  let providedDisabled = getContext<boolean>("headlessui-disabled-context");
+
   let {
     id = `headlessui-control-${useId()}`,
     as = "div",
-    disabled = false,
+    disabled = providedDisabled || false,
     children,
     ...theirProps
   }: Props & Record<string, any> = $props();

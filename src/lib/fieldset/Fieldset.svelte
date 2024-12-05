@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Component, Snippet } from "svelte";
+  import { type Component, getContext, setContext, type Snippet } from "svelte";
 
   type Props = {
     /** The element or component the fieldset should render as. */
@@ -14,9 +14,10 @@
     disabled?: boolean;
   };
 
+  let providedDisabled = getContext<boolean>("headlessui-disabled-context");
   let {
     as = "fieldset",
-    disabled = false,
+    disabled = providedDisabled || false,
     children,
     ...theirProps
   }: Props & Record<string, any> = $props();
@@ -40,6 +41,8 @@
   let dataAttributes: DataAttributes<SnippetProps> = {
     "data-disabled": disabled,
   };
+
+  setContext("headlessui-disabled-context", disabled);
 </script>
 
 {#if typeof as === "string"}
