@@ -7,8 +7,6 @@ on:
       - ".github/workflows/web.yaml"
   pull_request:
     branches: ["main"]
-    paths:
-      - ".github/workflows/web.yaml"
   workflow_dispatch:
 
 env:
@@ -54,7 +52,7 @@ jobs:
       #       ${{ runner.os }}-pnpm-store-
 
       - name: Install
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       # - name: Lint
       #   run: pnpm lint
@@ -64,3 +62,6 @@ jobs:
 
       - name: Test
         run: pnpm test:unit
+
+      - name: Build
+        run: pnpm build
