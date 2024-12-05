@@ -90,8 +90,8 @@
     {@render children?.(snippetProps)}
   </svelte:element>
 {:else}
-  {@const Component = as}
-  <Component {...theirProps} {...ourProps} {...dataAttributes}>
+  {@const AsComponent = as}
+  <AsComponent {...theirProps} {...ourProps} {...dataAttributes}>
     {@render children?.(snippetProps)}
-  </Component>
+  </AsComponent>
 {/if}

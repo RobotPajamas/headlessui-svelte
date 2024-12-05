@@ -46,6 +46,14 @@
     // "aria-describedby": describedBy,
   };
 
+  let snippetProps: SnippetProps = {
+    autofocus,
+    disabled,
+    focus: false,
+    hover: false,
+    invalid,
+  };
+
   // TODO: Utility function to create this
   let dataAttributes: DataAttributes<SnippetProps> = {
     "data-autofocus": autofocus,
@@ -53,14 +61,6 @@
     "data-focus": invalid,
     "data-hover": invalid,
     "data-invalid": invalid,
-  };
-
-  let snippetProps: SnippetProps = {
-    autofocus,
-    disabled,
-    focus: false,
-    hover: false,
-    invalid,
   };
 </script>
 
