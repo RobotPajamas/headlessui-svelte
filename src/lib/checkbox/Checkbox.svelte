@@ -53,36 +53,50 @@
     id = `headlessui-checkbox-${useId()}`,
     as = "span",
     autofocus = false,
+    checked = false,
     disabled = false,
     indeterminate = false,
     children,
     ...theirProps
   }: Props & Record<string, any> = $props();
 
-  let ourProps = {
+  function toggle() {
+    checked = !checked;
+  }
+
+  function onclick(e: MouseEvent) {
+    e.preventDefault();
+    toggle();
+  }
+
+  let ourProps = $derived({
     id,
     autofocus,
     disabled,
     role: "checkbox",
+    "aria-checked": checked,
     // "aria-invalid": invalid, // ? "" : undefined,
     // "aria-labelledby": labelledBy,
     // "aria-describedby": describedBy,
-  };
+    onclick,
+  });
 
-  let snippetProps: SnippetProps = {
+  let snippetProps: SnippetProps = $derived({
     autofocus,
+    checked,
     disabled,
     focus: false,
     hover: false,
-  };
+  });
 
   // TODO: Utility function to create this
-  let dataAttributes: DataAttributes<SnippetProps> = {
-    "data-autofocus": autofocus,
-    "data-disabled": disabled,
-    "data-focus": false,
-    "data-hover": false,
-  };
+  let dataAttributes: DataAttributes<SnippetProps> = $derived({
+    "data-autofocus": autofocus || undefined,
+    "data-checked": checked || undefined,
+    "data-disabled": disabled || undefined,
+    "data-focus": false || undefined,
+    "data-hover": false || undefined,
+  });
 </script>
 
 {#if typeof as === "string"}

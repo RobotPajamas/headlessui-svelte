@@ -37,31 +37,31 @@
     ...theirProps
   }: Props & Record<string, any> = $props();
 
-  let ourProps = {
+  let ourProps = $derived({
     id,
     autofocus,
     disabled,
     "aria-invalid": invalid, // ? "" : undefined,
     // "aria-labelledby": labelledBy,
     // "aria-describedby": describedBy,
-  };
+  });
 
-  let snippetProps: SnippetProps = {
+  let snippetProps: SnippetProps = $derived({
     autofocus,
     disabled,
     focus: false,
     hover: false,
     invalid,
-  };
+  });
 
   // TODO: Utility function to create this
-  let dataAttributes: DataAttributes<SnippetProps> = {
-    "data-autofocus": autofocus,
-    "data-disabled": disabled,
-    "data-focus": invalid,
-    "data-hover": invalid,
-    "data-invalid": invalid,
-  };
+  let dataAttributes: DataAttributes<SnippetProps> = $derived({
+    "data-autofocus": autofocus || undefined,
+    "data-disabled": disabled || undefined,
+    "data-focus": invalid || undefined,
+    "data-hover": invalid || undefined,
+    "data-invalid": invalid || undefined,
+  });
 </script>
 
 <input {...theirProps} {...ourProps} {...dataAttributes} />

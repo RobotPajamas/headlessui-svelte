@@ -31,19 +31,19 @@
     ...theirProps
   }: Props & Record<string, any> = $props();
 
-  let ourProps = {
+  let ourProps = $derived({
     disabled,
     "aria-disabled": disabled,
-  };
+  });
 
-  let snippetProps: SnippetProps = {
+  let snippetProps: SnippetProps = $derived({
     disabled,
-  };
+  });
 
   // TODO: Utility function to create this
-  let dataAttributes: DataAttributes<SnippetProps> = {
-    "data-disabled": disabled,
-  };
+  let dataAttributes: DataAttributes<SnippetProps> = $derived({
+    "data-disabled": disabled || undefined,
+  });
 
   setContext("headlessui-disabled-context", disabled);
 </script>

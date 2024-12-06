@@ -34,14 +34,14 @@
       // 'aria-labelledby': labelledBy
     };
 
-  let snippetProps: SnippetProps = {
+  let snippetProps: SnippetProps = $derived({
     disabled,
-  };
+  });
 
   // TODO: Utility function to create this
-  let dataAttributes: DataAttributes<SnippetProps> = {
-    "data-disabled": disabled,
-  };
+  let dataAttributes: DataAttributes<SnippetProps> = $derived({
+    "data-disabled": disabled || undefined,
+  });
 
   setContext("headlessui-disabled-context", disabled);
 
