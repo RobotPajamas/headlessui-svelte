@@ -80,7 +80,7 @@
     e.preventDefault();
   }
 
-  let ourProps = {
+  let ourProps = $derived({
     id,
     role: "switch",
     tabindex: tabIndex === -1 ? 0 : tabIndex,
@@ -90,32 +90,33 @@
     // "aria-labelledby": labelledBy,
     // "aria-describedby": describedBy,
     // autoFocus,
+    // TODO: Should these functions be pulled out of the 'derived' block?
     onclick,
     onkeypress,
     onkeyup,
-  };
+  });
 
   // TODO: Make these real values
-  let snippetProps: SnippetProps = {
+  let snippetProps: SnippetProps = $derived({
     active: false,
     autofocus: false,
     changing: false,
-    checked: false,
+    checked: checked,
     disabled: false,
     focus: false,
     hover: false,
-  };
+  });
 
   // TODO: Utility function to create this
-  let dataAttributes: DataAttributes<SnippetProps> = {
-    "data-active": false,
-    "data-autofocus": false,
-    "data-changing": false,
-    "data-checked": checked,
-    "data-disabled": disabled,
-    "data-focus": false,
-    "data-hover": false,
-  };
+  let dataAttributes: DataAttributes<SnippetProps> = $derived({
+    "data-active": snippetProps.active || undefined,
+    "data-autofocus": snippetProps.autofocus || undefined,
+    "data-changing": snippetProps.changing || undefined,
+    "data-checked": snippetProps.checked || undefined,
+    "data-disabled": snippetProps.disabled || undefined,
+    "data-focus": snippetProps.focus || undefined,
+    "data-hover": snippetProps.hover || undefined,
+  });
 </script>
 
 {#if typeof as === "string"}
