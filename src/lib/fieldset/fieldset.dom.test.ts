@@ -77,14 +77,20 @@ describe("Rendering", () => {
   it("should make nested inputs disabled when the fieldset is disabled", async () => {
     const component = await sveltify(`
       <script>
+      import Field from "$lib/field/Field.svelte";
         import Fieldset from "$lib/fieldset/Fieldset.svelte";
       </script>
-      <Fieldset disabled>
-        <input />
+      
+
+      <Fieldset>
+        <Field disabled>
+          <input />
+        </Field>
       </Fieldset>
     `);
     const { container } = render(component);
     let fieldset = container.firstElementChild;
+    screen.debug();
 
     expect(fieldset?.firstElementChild).toBeDisabled();
   });

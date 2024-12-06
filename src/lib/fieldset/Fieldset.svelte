@@ -15,6 +15,7 @@
   };
 
   let providedDisabled = getContext<boolean>("headlessui-disabled-context");
+  console.log("Fieldset: Incoming disabled context:", providedDisabled);
   let {
     as = "fieldset",
     disabled = providedDisabled || false,
@@ -43,6 +44,9 @@
   };
 
   setContext("headlessui-disabled-context", disabled);
+
+  let value = $state({ count: 0 });
+  setContext("counter", value);
 </script>
 
 {#if typeof as === "string"}

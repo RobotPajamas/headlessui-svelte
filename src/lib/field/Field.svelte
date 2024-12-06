@@ -2,10 +2,10 @@
   import type { Component, Snippet } from "svelte";
   import { useId } from "../../hooks/use-id";
 
-  import { getAllContexts, getContext } from "svelte";
+  import { getAllContexts, getContext, setContext } from "svelte";
 
-  const contexts = getAllContexts();
-  console.log(contexts);
+  // const contexts = getAllContexts();
+  // console.log(contexts);
 
   type Props = {
     /** The element or component the checkbox should render as. */
@@ -21,6 +21,7 @@
   };
 
   let providedDisabled = getContext<boolean>("headlessui-disabled-context");
+  console.log("Field: Incoming disabled context:", providedDisabled);
 
   let {
     id = `headlessui-control-${useId()}`,
@@ -43,6 +44,8 @@
   let dataAttributes: DataAttributes<SnippetProps> = {
     "data-disabled": disabled,
   };
+
+  setContext("headlessui-disabled-context", disabled);
 </script>
 
 {#if typeof as === "string"}
