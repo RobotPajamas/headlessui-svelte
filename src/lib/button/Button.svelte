@@ -1,5 +1,6 @@
 <script lang="ts">
   import { type Component, type Snippet } from "svelte";
+  import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
 
   type Props = {
     /** The element or component the button should render as. */
@@ -30,7 +31,7 @@
   let {
     as = "button",
     autofocus = false,
-    disabled = false,
+    disabled = useDisabled() || false,
     type = "button",
     children,
     ...theirProps
@@ -48,27 +49,26 @@
     type,
   };
 
-  let snippetProps: SnippetProps = {
+  let snippetProps: SnippetProps = $derived({
     active,
     autofocus,
     disabled,
     focus,
     hover,
-  };
+  });
 
   // TODO: Utility function to create this
-  let dataAttributes: DataAttributes<SnippetProps> = {
-    "data-active": active,
-    "data-autofocus": autofocus,
-    "data-disabled": disabled,
-    "data-focus": focus,
-    "data-hover": hover,
-  };
+  let dataAttributes: DataAttributes<SnippetProps> = $derived({
+    "data-active": active || undefined,
+    "data-autofocus": autofocus || undefined,
+    "data-disabled": disabled || undefined,
+    "data-focus": focus || undefined,
+    "data-hover": hover || undefined,
+  });
 </script>
 
 {#if typeof as === "string"}
   <svelte:element this={as} {...theirProps} {...ourProps} {...dataAttributes}>
-    <!-- <svelte:element this={as} role="button" {type} data-autofocus={autofocus}> -->
     {@render children?.({ active, autofocus, disabled, focus, hover })}
   </svelte:element>
 {:else}

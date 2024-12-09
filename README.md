@@ -12,6 +12,8 @@ This can manifest in strange, but intentional, ways:
 
 ## Progress
 
+The target compatibility for the components below is based on [HeadlessUI React d71fb9c](https://github.com/tailwindlabs/headlessui/tree/d71fb9cd2e12f5a48617b26e6bb3db90b3e07965). A component is considered completed when most of the mapped-over tests pass, and the component functions similarly to [headlessui.com](headlessui.com).
+
 ### Forms
 
 - [ ] Button

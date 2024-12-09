@@ -1,6 +1,8 @@
 <script lang="ts">
-  import type { Component, Snippet } from "svelte";
+  import { type Component, type Snippet } from "svelte";
   import { useId } from "../../hooks/use-id";
+  import { useLabelledBy } from "$lib/label/LabelProvider.svelte";
+  import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
 
   type Props = {
     /** The element or component the input should render as. */
@@ -31,37 +33,40 @@
     id = `headlessui-input-${useId()}`,
     as = "input",
     autofocus = false,
-    disabled = false,
+    disabled = useDisabled() || false,
     invalid = false,
     children,
     ...theirProps
   }: Props & Record<string, any> = $props();
 
-  let ourProps = {
+  // TODO: This feels soooo janky, this can't be the runes-way...
+  let labelledBy = $derived(useLabelledBy());
+
+  let ourProps = $derived({
     id,
     autofocus,
     disabled,
     "aria-invalid": invalid, // ? "" : undefined,
-    // "aria-labelledby": labelledBy,
+    "aria-labelledby": labelledBy?.[0],
     // "aria-describedby": describedBy,
-  };
+  });
 
-  let snippetProps: SnippetProps = {
+  let snippetProps: SnippetProps = $derived({
     autofocus,
     disabled,
     focus: false,
     hover: false,
     invalid,
-  };
+  });
 
   // TODO: Utility function to create this
-  let dataAttributes: DataAttributes<SnippetProps> = {
-    "data-autofocus": autofocus,
-    "data-disabled": disabled,
-    "data-focus": invalid,
-    "data-hover": invalid,
-    "data-invalid": invalid,
-  };
+  let dataAttributes: DataAttributes<SnippetProps> = $derived({
+    "data-autofocus": autofocus || undefined,
+    "data-disabled": disabled || undefined,
+    "data-focus": invalid || undefined,
+    "data-hover": invalid || undefined,
+    "data-invalid": invalid || undefined,
+  });
 </script>
 
 <input {...theirProps} {...ourProps} {...dataAttributes} />

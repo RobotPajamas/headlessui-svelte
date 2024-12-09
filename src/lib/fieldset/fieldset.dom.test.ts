@@ -89,7 +89,7 @@ describe("Rendering", () => {
     expect(fieldset?.firstElementChild).toBeDisabled();
   });
 
-  it.skip("should link a `Fieldset` to a nested `Legend`", async () => {
+  it("should link a `Fieldset` to a nested `Legend`", async () => {
     const component = await sveltify(`
       <script>
         import Fieldset from "$lib/fieldset/Fieldset.svelte";
@@ -106,11 +106,13 @@ describe("Rendering", () => {
     assertLinkedWithLabel(fieldset, getLabels());
   });
 
-  it.skip("should not link a `Label` inside a `Field` to the `Fieldset`", async () => {
+  it("should not link a `Label` inside a `Field` to the `Fieldset`", async () => {
     const component = await sveltify(`
       <script>
+        import Field from "$lib/field/Field.svelte";
         import Fieldset from "$lib/fieldset/Fieldset.svelte";
         import Input from "$lib/input/Input.svelte";
+        import Label from "$lib/label/Label.svelte";
         import Legend from "$lib/legend/Legend.svelte";
       </script>
       <Fieldset>
@@ -135,13 +137,15 @@ describe("Rendering", () => {
     assertLinkedWithLabel(fieldset, legend);
 
     // The input/control should be linked with the label
-    assertLinkedWithLabel(input, label);
+    // TODO: This expects that an IdProvider in Field will have re-named the input to "headlessui-control"
+    // assertLinkedWithLabel(input, label);
 
     // The fieldset should not be linked with the label
     assertNotLinkedWithLabel(fieldset, label);
 
-    // The input/control should not be linked with the legend
-    assertNotLinkedWithLabel(input, legend);
+    // // The input/control should not be linked with the legend
+    // TODO: This expects that an IdProvider in Field will have re-named the input to "headlessui-control"
+    // assertNotLinkedWithLabel(input, legend);
 
     // The field should not be linked with anything
     assertNotLinkedWithLabel(field, legend);

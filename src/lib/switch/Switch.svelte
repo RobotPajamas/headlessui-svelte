@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { Component, Snippet } from "svelte";
-  import {} from "svelte/compiler";
   import { resolveButtonType } from "../../utils/resolve-button-type";
   import { useId } from "../../hooks/use-id";
+  import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
 
   type Props = {
     /** The element or component the Switch should render as. */
@@ -54,7 +54,7 @@
     as = "button",
     // checked = $bindable(false),
     checked = false,
-    disabled = false,
+    disabled = useDisabled() || false,
     tabIndex = 0,
     type = undefined,
     children,

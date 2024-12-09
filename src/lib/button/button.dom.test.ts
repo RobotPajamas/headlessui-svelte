@@ -43,7 +43,6 @@ describe("Rendering", async () => {
         </Button>
       `);
       render(component);
-      // screen.debug();
 
       expect(screen.getByRole("button").textContent).toEqual(
         JSON.stringify({
@@ -61,7 +60,7 @@ describe("Rendering", async () => {
         <script>
           import Button from "$lib/button/Button.svelte";
         </script>
-        <Button autoFocus>My Button</Button>
+        <Button autofocus>My Button</Button>
       `);
       render(component);
 
@@ -79,7 +78,7 @@ describe("Rendering", async () => {
         </Button>
       `);
       render(component);
-      screen.debug();
+
       expect(screen.getByRole("button")).toHaveAttribute("type");
     });
   });
