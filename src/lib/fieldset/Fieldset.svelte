@@ -27,21 +27,9 @@
     ...theirProps
   }: Props & Record<string, any> = $props();
 
-  // let labels1 = useLabelledBy();
-  // console.log("Fieldset onLoad:", labels1);
-
-  // onMount(() => {
-  //   let labels = useLabelledBy();
-  //   console.log("Fieldset onMount:", labels);
-  // });
-
-  let context = getContext("headlessui-label-context");
-  console.log("Fieldset onLoad, context: ", context);
-
   let ourProps = $derived({
     disabled: disabled || undefined,
     role: as !== "fieldset" ? "group" : undefined,
-    // "aria-labelledby": labelledBy,
     "aria-disabled": as !== "fieldset" ? disabled : undefined,
   });
 

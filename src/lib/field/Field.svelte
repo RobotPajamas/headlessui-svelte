@@ -7,9 +7,6 @@
   } from "$lib/label/LabelProvider.svelte";
   import { getAllContexts, getContext, setContext } from "svelte";
 
-  // const contexts = getAllContexts();
-  // console.log(contexts);
-
   type Props = {
     /** The element or component the checkbox should render as. */
     as?: string | Component;
@@ -32,8 +29,6 @@
     ...theirProps
   }: Props & Record<string, any> = $props();
 
-  let labelledBy = useLabelledBy();
-
   let ourProps = $derived({
     disabled,
     "aria-disabled": disabled,
@@ -51,7 +46,7 @@
   setContext("headlessui-disabled-context", disabled);
 </script>
 
-<LabelProvider>
+<LabelProvider name="FieldLabel">
   {#if typeof as === "string"}
     <svelte:element this={as} {...theirProps} {...ourProps} {...dataAttributes}>
       {@render children?.(snippetProps)}

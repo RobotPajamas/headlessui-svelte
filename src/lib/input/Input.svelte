@@ -1,7 +1,11 @@
 <script lang="ts">
-  import type { Component, Snippet } from "svelte";
+  import { type Component, getAllContexts, getContext, onMount, type Snippet } from "svelte";
   import { useId } from "../../hooks/use-id";
-  import { useLabelledBy } from "$lib/label/LabelProvider.svelte";
+  import {
+    LABEL_CONTEXT_NAME,
+    LabelContext,
+    useLabelledBy,
+  } from "$lib/label/LabelProvider.svelte";
 
   type Props = {
     /** The element or component the input should render as. */
@@ -38,14 +42,15 @@
     ...theirProps
   }: Props & Record<string, any> = $props();
 
-  let labelledBy = useLabelledBy();
+  // TODO: This feels soooo janky, this can't be the runes-way...
+  let labelledBy = $derived(useLabelledBy());
 
   let ourProps = $derived({
     id,
     autofocus,
     disabled,
     "aria-invalid": invalid, // ? "" : undefined,
-    "aria-labelledby": labelledBy,
+    "aria-labelledby": labelledBy?.[0],
     // "aria-describedby": describedBy,
   });
 

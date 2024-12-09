@@ -8,7 +8,7 @@
     register: (value: string) => void;
   };
 
-  const LABEL_CONTEXT_NAME = "headlessui-label-context";
+  export const LABEL_CONTEXT_NAME = Symbol("headlessui-label-context");
   export function useLabelContext(): LabelContext {
     const context = getContext<LabelContext>(LABEL_CONTEXT_NAME);
     if (!context) {

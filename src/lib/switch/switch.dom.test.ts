@@ -197,7 +197,6 @@ describe("Rendering", async () => {
       `);
       render(component);
 
-      screen.debug();
       expect(getSwitch()).toHaveAttribute("type", "button");
     });
 
@@ -227,8 +226,6 @@ describe("Rendering", async () => {
         </Switch>
       `);
       render(component);
-
-      screen.debug();
 
       expect(getSwitch()).not.toHaveAttribute("type");
     });
