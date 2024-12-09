@@ -13,19 +13,19 @@ importers:
         version: 1.49.0
       '@sveltejs/adapter-static':
         specifier: ^3.0.6
-        version: 3.0.6(@sveltejs/kit@2.9.0(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))
+        version: 3.0.6(@sveltejs/kit@2.9.0(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))
       '@sveltejs/kit':
         specifier: ^2.9.0
-        version: 2.9.0(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
+        version: 2.9.0(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
       '@sveltejs/package':
         specifier: ^2.3.7
-        version: 2.3.7(svelte@5.6.0)(typescript@5.7.2)
+        version: 2.3.7(svelte@5.9.1)(typescript@5.7.2)
       '@sveltejs/vite-plugin-svelte':
         specifier: ^5.0.1
-        version: 5.0.1(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
+        version: 5.0.1(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
       '@tailwindcss/vite':
-        specifier: 4.0.0-beta.5
-        version: 4.0.0-beta.5(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
+        specifier: 4.0.0-beta.6
+        version: 4.0.0-beta.6(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
       '@testing-library/dom':
         specifier: ^10.4.0
         version: 10.4.0
@@ -34,7 +34,7 @@ importers:
         version: 6.6.3
       '@testing-library/svelte':
         specifier: ^5.2.6
-        version: 5.2.6(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))(vitest@2.1.8(@types/node@22.10.1)(happy-dom@15.11.7)(jsdom@25.0.1)(lightningcss@1.28.2))
+        version: 5.2.6(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))(vitest@2.1.8(@types/node@22.10.1)(happy-dom@15.11.7)(jsdom@25.0.1)(lightningcss@1.28.2))
       '@testing-library/user-event':
         specifier: ^14.5.2
         version: 14.5.2(@testing-library/dom@10.4.0)
@@ -51,14 +51,14 @@ importers:
         specifier: ^0.2.12
         version: 0.2.12
       svelte:
-        specifier: ^5.6.0
-        version: 5.6.0
+        specifier: ^5.9.1
+        version: 5.9.1
       svelte-check:
         specifier: ^4.1.1
-        version: 4.1.1(picomatch@4.0.2)(svelte@5.6.0)(typescript@5.7.2)
+        version: 4.1.1(picomatch@4.0.2)(svelte@5.9.1)(typescript@5.7.2)
       tailwindcss:
-        specifier: 4.0.0-beta.5
-        version: 4.0.0-beta.5
+        specifier: 4.0.0-beta.6
+        version: 4.0.0-beta.6
       tslib:
         specifier: ^2.8.1
         version: 2.8.1
@@ -66,8 +66,8 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
       vite:
-        specifier: ^6.0.2
-        version: 6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
+        specifier: ^6.0.3
+        version: 6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
       vitest:
         specifier: ^2.1.8
         version: 2.1.8(@types/node@22.10.1)(happy-dom@15.11.7)(jsdom@25.0.1)(lightningcss@1.28.2)
@@ -531,81 +531,81 @@ packages:
       svelte: ^5.0.0
       vite: ^6.0.0
 
-  '@tailwindcss/node@4.0.0-beta.5':
-    resolution: {integrity: sha512-29Ym+rT27zmWMbqcQUdbA9h1J+6k6EcV9nSfswModSWkeJAhrY8Sqzt7uU7hOtI7ETXjy22bSSHPjt/0+cjBdg==}
+  '@tailwindcss/node@4.0.0-beta.6':
+    resolution: {integrity: sha512-W07J19+05rRFKfk4sVtkNTb4iuGTI3BU6Ip/iEbb/w5NvaP+fSFK31OYFpJ+CXEWrbNgidUg46BQpw4Y1gophA==}
 
-  '@tailwindcss/oxide-android-arm64@4.0.0-beta.5':
-    resolution: {integrity: sha512-1eBq4Jo9R4CMHkrJuuHNrwBEkuSg37D/9OxsxcxvC372r8GdQ9fpy3cwYoVtqX6fG/Wg32P/n0t58QiQIlhkzg==}
+  '@tailwindcss/oxide-android-arm64@4.0.0-beta.6':
+    resolution: {integrity: sha512-yrUH/IfhkJWSYjF86UxpwrfaO866MjOhVQKG+wCgp0+YZGwirs8vX//a+8Y0SpEJrO0PVgmUU7xbsIM1EQWyTw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [android]
 
-  '@tailwindcss/oxide-darwin-arm64@4.0.0-beta.5':
-    resolution: {integrity: sha512-mUjChnLgul9DeKNsWNVuIykwYhKNOp8Suu4qob3T5d8joVYvt+zYM8fpQulAJDH5OzbKYoekkzquJDA6plNxEA==}
+  '@tailwindcss/oxide-darwin-arm64@4.0.0-beta.6':
+    resolution: {integrity: sha512-WqFHSD/kocp8rH3KYJow8zTatTEMfdrkZu2KL8nnKfuAEk+juJuUnOQaXDmfsYNQSkGjtnGdcB/fueq4UtUSvw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@tailwindcss/oxide-darwin-x64@4.0.0-beta.5':
-    resolution: {integrity: sha512-zLD9Z6B7olFOQUVn/3wZY5IL+6x294n7N+BA1cwwZtnxZNyp3o/26KGDP8mM1TcdbXHb5DOj4OX08wwbffzJrA==}
+  '@tailwindcss/oxide-darwin-x64@4.0.0-beta.6':
+    resolution: {integrity: sha512-zFc/TTBkDNLOKl/G9i1JOpg0AgrUOgBcSgURT/E0RsF0ZcKdiIjcyNswNThmjQnj+JAA8QL1Rct+04dH5j7Xjw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@tailwindcss/oxide-freebsd-x64@4.0.0-beta.5':
-    resolution: {integrity: sha512-FsjvHqsf/AXuEZVNA4TQlLZmanP9qjaqedjCyXv19JwfdxlEuFcGHwx6f1zATuiQnQ1DnYeoJLfjv88N59UvZQ==}
+  '@tailwindcss/oxide-freebsd-x64@4.0.0-beta.6':
+    resolution: {integrity: sha512-J3+uiPmKTeyefQBy4F0fz5sBQOj9eUTke6W/do/CplM5zXORQVCOKnrY2CPyDpN9bh4TYutldoiI0BP0Yo2ShA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [freebsd]
 
-  '@tailwindcss/oxide-linux-arm-gnueabihf@4.0.0-beta.5':
-    resolution: {integrity: sha512-qvtbk+AdBjd2TvwJ+nuYRHeNDnlP20QIsfnVIENiU1oRTjiWvejPwRlN7bPWn0IR41GG8NEkdhM9L6vHSzaqbw==}
+  '@tailwindcss/oxide-linux-arm-gnueabihf@4.0.0-beta.6':
+    resolution: {integrity: sha512-oWAwN6LjX2KH8ej0a/Uc1qnuy0ZSyAwOoJ1Fm2s38ipDmvxC8ARkNfWbYKN/D7dFhY7T3NMV4qjzamFKsrgchQ==}
     engines: {node: '>= 10'}
     cpu: [arm]
     os: [linux]
 
-  '@tailwindcss/oxide-linux-arm64-gnu@4.0.0-beta.5':
-    resolution: {integrity: sha512-kcz1OP9Bocq/1wPCldBYDCsll0VLUzUTWZfmg3vh7yKGbtBqL3NrJqmq8jT7FdctgcMnrJ3x3pBchKt/n6OkeQ==}
+  '@tailwindcss/oxide-linux-arm64-gnu@4.0.0-beta.6':
+    resolution: {integrity: sha512-p5jDtF6P3gOPl4eOH0YsN09yx/kXqLbgy4VMnOA9DB6Nlt+RVwM+JDa+RK/GAHL/qkAqO6YBEHeBURbWOeSuBw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@tailwindcss/oxide-linux-arm64-musl@4.0.0-beta.5':
-    resolution: {integrity: sha512-wzA1w/aJBfMFplEg6vVtMwuC4AOi8wyJPwhToxZuk3uq6sgm74prMbnWPhocJK8AwySJHOWDEj4ncXrRkMPPLg==}
+  '@tailwindcss/oxide-linux-arm64-musl@4.0.0-beta.6':
+    resolution: {integrity: sha512-ZI92S4LFuXx50gzkv98RXmybbRga183Y3NwBrQ+PfbRUOgDR0/tyT3Zh4CF/0eL9zzxa1mIE7cBbQjXNnejYqQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@tailwindcss/oxide-linux-x64-gnu@4.0.0-beta.5':
-    resolution: {integrity: sha512-nrk9HDW31TDpsr8Iiu0DRtMyr9Rniq/8IWqLV2NeS0EhsmpEi+Ll6PbbuZdPRLA+TCK7pWstqcTC/trxp7LGOQ==}
+  '@tailwindcss/oxide-linux-x64-gnu@4.0.0-beta.6':
+    resolution: {integrity: sha512-F0z48W0Yksrw+xg0GK54wUFa0KmFO9lpbKy2u/2yZtHs+ZwJ55PjdljjW1OJzEHpD81AT+8DT1PhNCkaqpOlqg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@tailwindcss/oxide-linux-x64-musl@4.0.0-beta.5':
-    resolution: {integrity: sha512-ETzuMsqiPwY1kt2i1ROTkL9zSJXCvT2Y4onIWKwKPVnEpezVouxXN9guIKoet6KkvDJgZoVtpbO6izgUqpNVwg==}
+  '@tailwindcss/oxide-linux-x64-musl@4.0.0-beta.6':
+    resolution: {integrity: sha512-GQx5f3qzLuAO7s1NTGY8PDhiEvrRTgYQhGN8HzH1LhP+URSbwgysyHKWFacejWrZS2azr6jlE84usxk8yn/7Xg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@tailwindcss/oxide-win32-arm64-msvc@4.0.0-beta.5':
-    resolution: {integrity: sha512-Mstca4eNIMwMr5JvjYaE7C/MmGyQeYVxYRMGCNGbW9UDzxRNNVrg9Z4YgXZ2NdnjyhQF7N6BysPMhfQjv0Czng==}
+  '@tailwindcss/oxide-win32-arm64-msvc@4.0.0-beta.6':
+    resolution: {integrity: sha512-DUs1A5rVK1Da7XvY2FzVgS+5vinwVDOeXgOsL6dblL8ag70wlwzZjyB3YRbxKRekPynwKdILgIv8/TYE3cv7AQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
-  '@tailwindcss/oxide-win32-x64-msvc@4.0.0-beta.5':
-    resolution: {integrity: sha512-q3B9DmTMsHpaxg1w0ZxcIL7F3Em8s42SlwDBgnWWPnc6bZMG/gpN6EEL6mWfnvNyyD2LuYLjwG/D0VDuccQdIA==}
+  '@tailwindcss/oxide-win32-x64-msvc@4.0.0-beta.6':
+    resolution: {integrity: sha512-VRsHAs3QBZa88N2Bp+LOV1vxr6f82L3KtamLIhyNTYXnEQjJxazaGwVow0VzN9sru2MTvcXjVFwdd9hUbeBKbA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
 
-  '@tailwindcss/oxide@4.0.0-beta.5':
-    resolution: {integrity: sha512-m5Vc6UdnFWh1lca5XfcJhkD7peMYE5bHeqFo3Jse+q5bd/ahJqGdIdRp72XtIjhpMztNS/hu0xRzabW/Jo+U9w==}
+  '@tailwindcss/oxide@4.0.0-beta.6':
+    resolution: {integrity: sha512-i/Fg/rXYwzV7OJEXbcwjNVkYPgnyfLdYXtduOX7Kvf686xn6jR/k6bhl9fVkQcDb/ujyKzNjD2POAjwhHAC8aw==}
     engines: {node: '>= 10'}
 
-  '@tailwindcss/vite@4.0.0-beta.5':
-    resolution: {integrity: sha512-zyPth1Zl1ChmDmNWXoaznj7HuQlEZ+V6xJfMScryCYKZHy+hzrXKwambjIb/ddE6ajR7DneSFAdALsn0WWQcwg==}
+  '@tailwindcss/vite@4.0.0-beta.6':
+    resolution: {integrity: sha512-SDlW8wrfhoGvEmNdbxdjPD0RJV5ErPegeJQFXNlS6CF815tzMMTekToIeMJphvwUO6w2TLSjvO9w3F9Z0ElMgQ==}
     peerDependencies:
       vite: ^5.2.0 || ^6
 
@@ -1275,15 +1275,15 @@ packages:
       svelte: ^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0
       typescript: ^4.9.4 || ^5.0.0
 
-  svelte@5.6.0:
-    resolution: {integrity: sha512-/rAlFnA7kDtNYN3v4oKKcS6q7oJE1OlFUWiELvo0RcMJsVXAuRzbBrnIphx45AbdEIETZMde7TJgRb/P1RwAyA==}
+  svelte@5.9.1:
+    resolution: {integrity: sha512-2iWB8J9j/tZqEfuplxSt7gi/iA0Fg7VFwWATxDmG/efttLI05hwLWAKIx4ltv+FtvJIhRGs28rJ0e8uY8e3LWg==}
     engines: {node: '>=18'}
 
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
 
-  tailwindcss@4.0.0-beta.5:
-    resolution: {integrity: sha512-59zeDyaVE5z1iQnhk5cGeBJvb6Z/Iym4qSFzPddiotWbnqWcIqj0kRgZH8OyR4VZU+solTRQaWRgfDZ8PQ+p8A==}
+  tailwindcss@4.0.0-beta.6:
+    resolution: {integrity: sha512-eCCuMk3H65w4J/QWkjxfeWoBSKbCD3E6Uj2LA6Xkkl4eMa1MXuwVpIU1RXcLIp+BVsXGEZMP7i7uJig7KxfAXQ==}
 
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
@@ -1376,8 +1376,8 @@ packages:
       terser:
         optional: true
 
-  vite@6.0.2:
-    resolution: {integrity: sha512-XdQ+VsY2tJpBsKGs0wf3U/+azx8BBpYRHFAyKm5VeEZNOJZRB63q7Sc8Iup3k0TrN3KO6QgyzFf+opSbfY1y0g==}
+  vite@6.0.3:
+    resolution: {integrity: sha512-Cmuo5P0ENTN6HxLSo6IHsjCLn/81Vgrp81oaiFFMRa8gGDj5xEjIcEpf2ZymZtZR8oU0P2JX5WuUp/rlXcHkAw==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -1751,13 +1751,13 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.26.0':
     optional: true
 
-  '@sveltejs/adapter-static@3.0.6(@sveltejs/kit@2.9.0(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))':
+  '@sveltejs/adapter-static@3.0.6(@sveltejs/kit@2.9.0(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))':
     dependencies:
-      '@sveltejs/kit': 2.9.0(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
+      '@sveltejs/kit': 2.9.0(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
 
-  '@sveltejs/kit@2.9.0(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))':
+  '@sveltejs/kit@2.9.0(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.0.1(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
+      '@sveltejs/vite-plugin-svelte': 5.0.1(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
       '@types/cookie': 0.6.0
       cookie: 0.6.0
       devalue: 5.1.1
@@ -1769,103 +1769,103 @@ snapshots:
       sade: 1.8.1
       set-cookie-parser: 2.6.0
       sirv: 3.0.0
-      svelte: 5.6.0
+      svelte: 5.9.1
       tiny-glob: 0.2.9
-      vite: 6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
+      vite: 6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
 
-  '@sveltejs/package@2.3.7(svelte@5.6.0)(typescript@5.7.2)':
+  '@sveltejs/package@2.3.7(svelte@5.9.1)(typescript@5.7.2)':
     dependencies:
       chokidar: 4.0.1
       kleur: 4.1.5
       sade: 1.8.1
       semver: 7.6.0
-      svelte: 5.6.0
-      svelte2tsx: 0.7.24(svelte@5.6.0)(typescript@5.7.2)
+      svelte: 5.9.1
+      svelte2tsx: 0.7.24(svelte@5.9.1)(typescript@5.7.2)
     transitivePeerDependencies:
       - typescript
 
-  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))':
+  '@sveltejs/vite-plugin-svelte-inspector@4.0.1(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 5.0.1(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
+      '@sveltejs/vite-plugin-svelte': 5.0.1(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
       debug: 4.3.7
-      svelte: 5.6.0
-      vite: 6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
+      svelte: 5.9.1
+      vite: 6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))':
+  '@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
+      '@sveltejs/vite-plugin-svelte-inspector': 4.0.1(@sveltejs/vite-plugin-svelte@5.0.1(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)))(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
       debug: 4.3.7
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.14
-      svelte: 5.6.0
-      vite: 6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
-      vitefu: 1.0.3(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
+      svelte: 5.9.1
+      vite: 6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
+      vitefu: 1.0.3(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))
     transitivePeerDependencies:
       - supports-color
 
-  '@tailwindcss/node@4.0.0-beta.5':
+  '@tailwindcss/node@4.0.0-beta.6':
     dependencies:
       enhanced-resolve: 5.17.1
       jiti: 2.4.0
-      tailwindcss: 4.0.0-beta.5
+      tailwindcss: 4.0.0-beta.6
 
-  '@tailwindcss/oxide-android-arm64@4.0.0-beta.5':
+  '@tailwindcss/oxide-android-arm64@4.0.0-beta.6':
     optional: true
 
-  '@tailwindcss/oxide-darwin-arm64@4.0.0-beta.5':
+  '@tailwindcss/oxide-darwin-arm64@4.0.0-beta.6':
     optional: true
 
-  '@tailwindcss/oxide-darwin-x64@4.0.0-beta.5':
+  '@tailwindcss/oxide-darwin-x64@4.0.0-beta.6':
     optional: true
 
-  '@tailwindcss/oxide-freebsd-x64@4.0.0-beta.5':
+  '@tailwindcss/oxide-freebsd-x64@4.0.0-beta.6':
     optional: true
 
-  '@tailwindcss/oxide-linux-arm-gnueabihf@4.0.0-beta.5':
+  '@tailwindcss/oxide-linux-arm-gnueabihf@4.0.0-beta.6':
     optional: true
 
-  '@tailwindcss/oxide-linux-arm64-gnu@4.0.0-beta.5':
+  '@tailwindcss/oxide-linux-arm64-gnu@4.0.0-beta.6':
     optional: true
 
-  '@tailwindcss/oxide-linux-arm64-musl@4.0.0-beta.5':
+  '@tailwindcss/oxide-linux-arm64-musl@4.0.0-beta.6':
     optional: true
 
-  '@tailwindcss/oxide-linux-x64-gnu@4.0.0-beta.5':
+  '@tailwindcss/oxide-linux-x64-gnu@4.0.0-beta.6':
     optional: true
 
-  '@tailwindcss/oxide-linux-x64-musl@4.0.0-beta.5':
+  '@tailwindcss/oxide-linux-x64-musl@4.0.0-beta.6':
     optional: true
 
-  '@tailwindcss/oxide-win32-arm64-msvc@4.0.0-beta.5':
+  '@tailwindcss/oxide-win32-arm64-msvc@4.0.0-beta.6':
     optional: true
 
-  '@tailwindcss/oxide-win32-x64-msvc@4.0.0-beta.5':
+  '@tailwindcss/oxide-win32-x64-msvc@4.0.0-beta.6':
     optional: true
 
-  '@tailwindcss/oxide@4.0.0-beta.5':
+  '@tailwindcss/oxide@4.0.0-beta.6':
     optionalDependencies:
-      '@tailwindcss/oxide-android-arm64': 4.0.0-beta.5
-      '@tailwindcss/oxide-darwin-arm64': 4.0.0-beta.5
-      '@tailwindcss/oxide-darwin-x64': 4.0.0-beta.5
-      '@tailwindcss/oxide-freebsd-x64': 4.0.0-beta.5
-      '@tailwindcss/oxide-linux-arm-gnueabihf': 4.0.0-beta.5
-      '@tailwindcss/oxide-linux-arm64-gnu': 4.0.0-beta.5
-      '@tailwindcss/oxide-linux-arm64-musl': 4.0.0-beta.5
-      '@tailwindcss/oxide-linux-x64-gnu': 4.0.0-beta.5
-      '@tailwindcss/oxide-linux-x64-musl': 4.0.0-beta.5
-      '@tailwindcss/oxide-win32-arm64-msvc': 4.0.0-beta.5
-      '@tailwindcss/oxide-win32-x64-msvc': 4.0.0-beta.5
+      '@tailwindcss/oxide-android-arm64': 4.0.0-beta.6
+      '@tailwindcss/oxide-darwin-arm64': 4.0.0-beta.6
+      '@tailwindcss/oxide-darwin-x64': 4.0.0-beta.6
+      '@tailwindcss/oxide-freebsd-x64': 4.0.0-beta.6
+      '@tailwindcss/oxide-linux-arm-gnueabihf': 4.0.0-beta.6
+      '@tailwindcss/oxide-linux-arm64-gnu': 4.0.0-beta.6
+      '@tailwindcss/oxide-linux-arm64-musl': 4.0.0-beta.6
+      '@tailwindcss/oxide-linux-x64-gnu': 4.0.0-beta.6
+      '@tailwindcss/oxide-linux-x64-musl': 4.0.0-beta.6
+      '@tailwindcss/oxide-win32-arm64-msvc': 4.0.0-beta.6
+      '@tailwindcss/oxide-win32-x64-msvc': 4.0.0-beta.6
 
-  '@tailwindcss/vite@4.0.0-beta.5(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))':
+  '@tailwindcss/vite@4.0.0-beta.6(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))':
     dependencies:
-      '@tailwindcss/node': 4.0.0-beta.5
-      '@tailwindcss/oxide': 4.0.0-beta.5
+      '@tailwindcss/node': 4.0.0-beta.6
+      '@tailwindcss/oxide': 4.0.0-beta.6
       lightningcss: 1.28.2
-      tailwindcss: 4.0.0-beta.5
-      vite: 6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
+      tailwindcss: 4.0.0-beta.6
+      vite: 6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
 
   '@testing-library/dom@10.4.0':
     dependencies:
@@ -1888,12 +1888,12 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
 
-  '@testing-library/svelte@5.2.6(svelte@5.6.0)(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))(vitest@2.1.8(@types/node@22.10.1)(happy-dom@15.11.7)(jsdom@25.0.1)(lightningcss@1.28.2))':
+  '@testing-library/svelte@5.2.6(svelte@5.9.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2))(vitest@2.1.8(@types/node@22.10.1)(happy-dom@15.11.7)(jsdom@25.0.1)(lightningcss@1.28.2))':
     dependencies:
       '@testing-library/dom': 10.4.0
-      svelte: 5.6.0
+      svelte: 5.9.1
     optionalDependencies:
-      vite: 6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
+      vite: 6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
       vitest: 2.1.8(@types/node@22.10.1)(happy-dom@15.11.7)(jsdom@25.0.1)(lightningcss@1.28.2)
 
   '@testing-library/user-event@14.5.2(@testing-library/dom@10.4.0)':
@@ -2519,26 +2519,26 @@ snapshots:
     dependencies:
       has-flag: 4.0.0
 
-  svelte-check@4.1.1(picomatch@4.0.2)(svelte@5.6.0)(typescript@5.7.2):
+  svelte-check@4.1.1(picomatch@4.0.2)(svelte@5.9.1)(typescript@5.7.2):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       chokidar: 4.0.1
       fdir: 6.4.2(picomatch@4.0.2)
       picocolors: 1.1.1
       sade: 1.8.1
-      svelte: 5.6.0
+      svelte: 5.9.1
       typescript: 5.7.2
     transitivePeerDependencies:
       - picomatch
 
-  svelte2tsx@0.7.24(svelte@5.6.0)(typescript@5.7.2):
+  svelte2tsx@0.7.24(svelte@5.9.1)(typescript@5.7.2):
     dependencies:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
-      svelte: 5.6.0
+      svelte: 5.9.1
       typescript: 5.7.2
 
-  svelte@5.6.0:
+  svelte@5.9.1:
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@jridgewell/sourcemap-codec': 1.5.0
@@ -2556,7 +2556,7 @@ snapshots:
 
   symbol-tree@3.2.4: {}
 
-  tailwindcss@4.0.0-beta.5: {}
+  tailwindcss@4.0.0-beta.6: {}
 
   tapable@2.2.1: {}
 
@@ -2625,7 +2625,7 @@ snapshots:
       fsevents: 2.3.3
       lightningcss: 1.28.2
 
-  vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2):
+  vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2):
     dependencies:
       esbuild: 0.24.0
       postcss: 8.4.49
@@ -2636,9 +2636,9 @@ snapshots:
       jiti: 2.4.0
       lightningcss: 1.28.2
 
-  vitefu@1.0.3(vite@6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)):
+  vitefu@1.0.3(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)):
     optionalDependencies:
-      vite: 6.0.2(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
+      vite: 6.0.3(@types/node@22.10.1)(jiti@2.4.0)(lightningcss@1.28.2)
 
   vitest@2.1.8(@types/node@22.10.1)(happy-dom@15.11.7)(jsdom@25.0.1)(lightningcss@1.28.2):
     dependencies:

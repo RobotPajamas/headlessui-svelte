@@ -2,6 +2,7 @@
   import { type Component, type Snippet } from "svelte";
   import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
   import { hover } from "$lib/internal/actions/use-hover.svelte";
+  import { press } from "$lib/internal/actions/use-press.svelte";
 
   type Props = {
     /** The element or component the button should render as. */
@@ -39,7 +40,7 @@
   }: Props & Record<string, any> = $props();
 
   // TODO: These do nothing - should render a button using a render prop
-  let active = false;
+  let isActive = $state(false);
   let focus = false;
   let isHovered = $state(false);
 
@@ -51,7 +52,7 @@
   };
 
   let snippetProps: SnippetProps = $derived({
-    active,
+    active: isActive,
     autofocus,
     disabled,
     focus,
@@ -60,7 +61,7 @@
 
   // TODO: Utility function to create this
   let dataAttributes: DataAttributes<SnippetProps> = $derived({
-    "data-active": active || undefined,
+    "data-active": isActive || undefined,
     "data-autofocus": autofocus || undefined,
     "data-disabled": disabled || undefined,
     "data-focus": focus || undefined,
@@ -73,6 +74,13 @@
   function onHoverEnd() {
     isHovered = false;
   }
+
+  function onPressStart() {
+    isActive = true;
+  }
+  function onPressEnd() {
+    isActive = false;
+  }
 </script>
 
 {#if typeof as === "string"}
@@ -82,17 +90,15 @@
     {...ourProps}
     {...dataAttributes}
     use:hover={{ onHoverStart, onHoverEnd }}
+    use:press={{ onPressStart, onPressEnd }}
   >
     {@render children?.(snippetProps)}
   </svelte:element>
 {:else}
   {@const AsComponent = as}
   <!-- TODO: use:hover={{ onHoverStart, onHoverEnd }} -->
-  <AsComponent
-    {...theirProps}
-    {...ourProps}
-    {...dataAttributes}
-    >
+  <!-- TODO: use:press={{ onPressStart, onPressEnd }} -->
+  <AsComponent {...theirProps} {...ourProps} {...dataAttributes}>
     {@render children?.(snippetProps)}
   </AsComponent>
 {/if}
