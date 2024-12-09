@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Component, Snippet } from "svelte";
-  import { useId } from "../../hooks/use-id";
+  import { useId } from "$lib/internal/hooks/use-id";
   import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
 
   type Props = {

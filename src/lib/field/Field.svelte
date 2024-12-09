@@ -1,6 +1,6 @@
 <script lang="ts">
   import { type Component, getContext, setContext, type Snippet } from "svelte";
-  import { useId } from "../../hooks/use-id";
+  import { useId } from "$lib/internal/hooks/use-id";
   import LabelProvider from "$lib/label/LabelProvider.svelte";
   import DisabledProvider, { useDisabled } from "$lib/internal/DisabledProvider.svelte";
 
