@@ -1,6 +1,8 @@
 <script lang="ts">
   import { type Component, type Snippet } from "svelte";
   import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
+  import { hover } from "$lib/internal/actions/use-hover.svelte";
+  import { press } from "$lib/internal/actions/use-press.svelte";
 
   type Props = {
     /** The element or component the button should render as. */
@@ -37,42 +39,76 @@
     ...theirProps
   }: Props & Record<string, any> = $props();
 
-  // TODO: These do nothing - should render a button using a render prop
-  let active = false;
-  let focus = false;
-  let hover = false;
+  let isActive = $state(false);
+  let isFocused = $state(autofocus);
+  let isHovered = $state(false);
 
-  let ourProps = {
+  let ourProps = $derived({
     autofocus,
     disabled,
     role: "button",
     type,
-  };
+    onfocus,
+    onblur,
+  });
 
   let snippetProps: SnippetProps = $derived({
-    active,
+    active: isActive,
     autofocus,
     disabled,
-    focus,
-    hover,
+    focus: isFocused,
+    hover: isHovered,
   });
 
   // TODO: Utility function to create this
   let dataAttributes: DataAttributes<SnippetProps> = $derived({
-    "data-active": active || undefined,
+    "data-active": isActive || undefined,
     "data-autofocus": autofocus || undefined,
     "data-disabled": disabled || undefined,
-    "data-focus": focus || undefined,
-    "data-hover": hover || undefined,
+    "data-focus": isFocused || undefined,
+    "data-hover": isHovered || undefined,
   });
+
+  function onHoverStart() {
+    isHovered = true;
+  }
+  function onHoverEnd() {
+    isHovered = false;
+  }
+
+  function onPressStart() {
+    isActive = true;
+  }
+  function onPressEnd() {
+    isActive = false;
+  }
+
+  function onfocus(e: FocusEvent) {
+    e.preventDefault();
+    isFocused = true;
+  }
+
+  function onblur(e: FocusEvent) {
+    e.preventDefault();
+    isFocused = false;
+  }
 </script>
 
 {#if typeof as === "string"}
-  <svelte:element this={as} {...theirProps} {...ourProps} {...dataAttributes}>
-    {@render children?.({ active, autofocus, disabled, focus, hover })}
+  <svelte:element
+    this={as}
+    {...theirProps}
+    {...ourProps}
+    {...dataAttributes}
+    use:hover={{ onHoverStart, onHoverEnd }}
+    use:press={{ onPressStart, onPressEnd }}
+  >
+    {@render children?.(snippetProps)}
   </svelte:element>
 {:else}
   {@const AsComponent = as}
+  <!-- TODO: use:hover={{ onHoverStart, onHoverEnd }} -->
+  <!-- TODO: use:press={{ onPressStart, onPressEnd }} -->
   <AsComponent {...theirProps} {...ourProps} {...dataAttributes}>
     {@render children?.(snippetProps)}
   </AsComponent>

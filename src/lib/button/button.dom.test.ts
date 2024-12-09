@@ -55,7 +55,7 @@ describe("Rendering", async () => {
       );
     });
 
-    it("should map the `autoFocus` prop to a `data-autofocus` attribute", async () => {
+    it("should map the `autofocus` prop to a `data-autofocus` attribute", async () => {
       const component = await sveltify(`
         <script>
           import Button from "$lib/button/Button.svelte";
