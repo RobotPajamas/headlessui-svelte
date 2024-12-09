@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Component, Snippet } from "svelte";
   import { useId } from "../../hooks/use-id";
+  import { useLabelledBy } from "$lib/label/LabelProvider.svelte";
 
   type Props = {
     /** The element or component the input should render as. */
@@ -37,12 +38,14 @@
     ...theirProps
   }: Props & Record<string, any> = $props();
 
+  let labelledBy = useLabelledBy();
+
   let ourProps = $derived({
     id,
     autofocus,
     disabled,
     "aria-invalid": invalid, // ? "" : undefined,
-    // "aria-labelledby": labelledBy,
+    "aria-labelledby": labelledBy,
     // "aria-describedby": describedBy,
   });
 

@@ -1,5 +1,9 @@
 <script lang="ts">
-  import { type Component, getContext, setContext, type Snippet } from "svelte";
+  import { type Component, getContext, onMount, setContext, type Snippet } from "svelte";
+  import LabelProvider, {
+    useLabelContext,
+    useLabelledBy,
+  } from "$lib/label/LabelProvider.svelte";
 
   type Props = {
     /** The element or component the fieldset should render as. */
@@ -15,7 +19,7 @@
   };
 
   let providedDisabled = getContext<boolean>("headlessui-disabled-context");
-  console.log("Fieldset: Incoming disabled context:", providedDisabled);
+
   let {
     as = "fieldset",
     disabled = providedDisabled || false,
@@ -23,16 +27,23 @@
     ...theirProps
   }: Props & Record<string, any> = $props();
 
-  let ourProps = as === "fieldset"
-    ? {
-      disabled,
-      // 'aria-labelledby': labelledBy
-    }
-    : {
-      role: "group",
-      "aria-disabled": disabled,
-      // 'aria-labelledby': labelledBy
-    };
+  // let labels1 = useLabelledBy();
+  // console.log("Fieldset onLoad:", labels1);
+
+  // onMount(() => {
+  //   let labels = useLabelledBy();
+  //   console.log("Fieldset onMount:", labels);
+  // });
+
+  let context = getContext("headlessui-label-context");
+  console.log("Fieldset onLoad, context: ", context);
+
+  let ourProps = $derived({
+    disabled: disabled || undefined,
+    role: as !== "fieldset" ? "group" : undefined,
+    // "aria-labelledby": labelledBy,
+    "aria-disabled": as !== "fieldset" ? disabled : undefined,
+  });
 
   let snippetProps: SnippetProps = $derived({
     disabled,
@@ -42,20 +53,31 @@
   let dataAttributes: DataAttributes<SnippetProps> = $derived({
     "data-disabled": disabled || undefined,
   });
-
   setContext("headlessui-disabled-context", disabled);
-
-  let value = $state({ count: 0 });
-  setContext("counter", value);
 </script>
 
-{#if typeof as === "string"}
-  <svelte:element this={as} {...theirProps} {...ourProps} {...dataAttributes}>
-    {@render children?.(snippetProps)}
-  </svelte:element>
-{:else}
-  {@const AsComponent = as}
-  <AsComponent {...theirProps} {...ourProps} {...dataAttributes}>
-    {@render children?.(snippetProps)}
-  </AsComponent>
-{/if}
+<LabelProvider name="FieldsetLabel">
+  {#snippet labelledBy({ labelIds })}
+    {#if typeof as === "string"}
+      <svelte:element
+        this={as}
+        {...theirProps}
+        {...ourProps}
+        {...dataAttributes}
+        aria-labelledby={labelIds[0]}
+      >
+        {@render children?.(snippetProps)}
+      </svelte:element>
+    {:else}
+      {@const AsComponent = as}
+      <AsComponent
+        {...theirProps}
+        {...ourProps}
+        {...dataAttributes}
+        aria-labelledby={labelIds}
+      >
+        {@render children?.(snippetProps)}
+      </AsComponent>
+    {/if}
+  {/snippet}
+</LabelProvider>

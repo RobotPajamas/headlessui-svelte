@@ -89,7 +89,7 @@ describe("Rendering", () => {
     expect(fieldset?.firstElementChild).toBeDisabled();
   });
 
-  it.skip("should link a `Fieldset` to a nested `Legend`", async () => {
+  it("should link a `Fieldset` to a nested `Legend`", async () => {
     const component = await sveltify(`
       <script>
         import Fieldset from "$lib/fieldset/Fieldset.svelte";
@@ -106,11 +106,13 @@ describe("Rendering", () => {
     assertLinkedWithLabel(fieldset, getLabels());
   });
 
-  it.skip("should not link a `Label` inside a `Field` to the `Fieldset`", async () => {
+  it("should not link a `Label` inside a `Field` to the `Fieldset`", async () => {
     const component = await sveltify(`
       <script>
+        import Field from "$lib/field/Field.svelte";
         import Fieldset from "$lib/fieldset/Fieldset.svelte";
         import Input from "$lib/input/Input.svelte";
+        import Label from "$lib/label/Label.svelte";
         import Legend from "$lib/legend/Legend.svelte";
       </script>
       <Fieldset>
@@ -122,6 +124,8 @@ describe("Rendering", () => {
       </Fieldset>
     `);
     render(component);
+
+    screen.debug();
 
     let legend = screen.getByText("My Legend");
     let label = screen.getByText("My Label");

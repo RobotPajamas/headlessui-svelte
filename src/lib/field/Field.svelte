@@ -1,7 +1,10 @@
 <script lang="ts">
   import type { Component, Snippet } from "svelte";
   import { useId } from "../../hooks/use-id";
-
+  import LabelProvider, {
+    useLabelContext,
+    useLabelledBy,
+  } from "$lib/label/LabelProvider.svelte";
   import { getAllContexts, getContext, setContext } from "svelte";
 
   // const contexts = getAllContexts();
@@ -19,9 +22,7 @@
     /** Whether or not the field is disabled. */
     disabled?: boolean;
   };
-
   let providedDisabled = getContext<boolean>("headlessui-disabled-context");
-  console.log("Field: Incoming disabled context:", providedDisabled);
 
   let {
     id = `headlessui-control-${useId()}`,
@@ -30,6 +31,8 @@
     children,
     ...theirProps
   }: Props & Record<string, any> = $props();
+
+  let labelledBy = useLabelledBy();
 
   let ourProps = $derived({
     disabled,
@@ -48,13 +51,15 @@
   setContext("headlessui-disabled-context", disabled);
 </script>
 
-{#if typeof as === "string"}
-  <svelte:element this={as} {...theirProps} {...ourProps} {...dataAttributes}>
-    {@render children?.(snippetProps)}
-  </svelte:element>
-{:else}
-  {@const AsComponent = as}
-  <AsComponent {...theirProps} {...ourProps} {...dataAttributes}>
-    {@render children?.(snippetProps)}
-  </AsComponent>
-{/if}
+<LabelProvider>
+  {#if typeof as === "string"}
+    <svelte:element this={as} {...theirProps} {...ourProps} {...dataAttributes}>
+      {@render children?.(snippetProps)}
+    </svelte:element>
+  {:else}
+    {@const AsComponent = as}
+    <AsComponent {...theirProps} {...ourProps} {...dataAttributes}>
+      {@render children?.(snippetProps)}
+    </AsComponent>
+  {/if}
+</LabelProvider>
