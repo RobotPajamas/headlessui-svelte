@@ -1,6 +1,7 @@
 <script lang="ts">
   import { type Component, type Snippet } from "svelte";
   import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
+  import { hover } from "$lib/internal/actions/use-hover.svelte";
 
   type Props = {
     /** The element or component the button should render as. */
@@ -40,7 +41,7 @@
   // TODO: These do nothing - should render a button using a render prop
   let active = false;
   let focus = false;
-  let hover = false;
+  let isHovered = $state(false);
 
   let ourProps = {
     autofocus,
@@ -54,7 +55,7 @@
     autofocus,
     disabled,
     focus,
-    hover,
+    hover: isHovered,
   });
 
   // TODO: Utility function to create this
@@ -63,17 +64,35 @@
     "data-autofocus": autofocus || undefined,
     "data-disabled": disabled || undefined,
     "data-focus": focus || undefined,
-    "data-hover": hover || undefined,
+    "data-hover": isHovered || undefined,
   });
+
+  function onHoverStart() {
+    isHovered = true;
+  }
+  function onHoverEnd() {
+    isHovered = false;
+  }
 </script>
 
 {#if typeof as === "string"}
-  <svelte:element this={as} {...theirProps} {...ourProps} {...dataAttributes}>
-    {@render children?.({ active, autofocus, disabled, focus, hover })}
+  <svelte:element
+    this={as}
+    {...theirProps}
+    {...ourProps}
+    {...dataAttributes}
+    use:hover={{ onHoverStart, onHoverEnd }}
+  >
+    {@render children?.(snippetProps)}
   </svelte:element>
 {:else}
   {@const AsComponent = as}
-  <AsComponent {...theirProps} {...ourProps} {...dataAttributes}>
+  <!-- TODO: use:hover={{ onHoverStart, onHoverEnd }} -->
+  <AsComponent
+    {...theirProps}
+    {...ourProps}
+    {...dataAttributes}
+    >
     {@render children?.(snippetProps)}
   </AsComponent>
 {/if}
