@@ -1,6 +1,6 @@
 <script lang="ts">
   import { type Component, onMount, type Snippet } from "svelte";
-  import { useId } from "../../hooks/use-id";
+  import { useId } from "$lib/internal/hooks/use-id";
   import { useLabelContext } from "./LabelProvider.svelte";
   import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
 

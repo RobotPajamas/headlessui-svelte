@@ -10,9 +10,19 @@ This can manifest in strange, but intentional, ways:
 - the existence of a `Fragment` component
 - ...
 
+## Installation
+
+```bash
+npm install @robotpajamas/headlessui-svelte
+```
+
+## Documentation
+
+Full documenation and examples will eventually live at [headlessui-svelte.com](headlessui-svelte.com)
+
 ## Progress
 
-The target compatibility for the components below is based on [HeadlessUI React d71fb9c](https://github.com/tailwindlabs/headlessui/tree/d71fb9cd2e12f5a48617b26e6bb3db90b3e07965). A component is considered completed when most of the mapped-over tests pass, and the component functions similarly to [headlessui.com](headlessui.com).
+The target compatibility for the components below is based on [HeadlessUI React 2.2.0 (d71fb9c)](https://github.com/tailwindlabs/headlessui/tree/d71fb9cd2e12f5a48617b26e6bb3db90b3e07965). A component is considered completed when most of the mapped-over tests pass, and the component functions similarly to [headlessui.com](headlessui.com).
 
 ### Forms
 
