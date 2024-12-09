@@ -39,23 +39,24 @@
     ...theirProps
   }: Props & Record<string, any> = $props();
 
-  // TODO: These do nothing - should render a button using a render prop
   let isActive = $state(false);
-  let focus = false;
+  let isFocused = $state(autofocus);
   let isHovered = $state(false);
 
-  let ourProps = {
+  let ourProps = $derived({
     autofocus,
     disabled,
     role: "button",
     type,
-  };
+    onfocus,
+    onblur,
+  });
 
   let snippetProps: SnippetProps = $derived({
     active: isActive,
     autofocus,
     disabled,
-    focus,
+    focus: isFocused,
     hover: isHovered,
   });
 
@@ -64,7 +65,7 @@
     "data-active": isActive || undefined,
     "data-autofocus": autofocus || undefined,
     "data-disabled": disabled || undefined,
-    "data-focus": focus || undefined,
+    "data-focus": isFocused || undefined,
     "data-hover": isHovered || undefined,
   });
 
@@ -80,6 +81,16 @@
   }
   function onPressEnd() {
     isActive = false;
+  }
+
+  function onfocus(e: FocusEvent) {
+    e.preventDefault();
+    isFocused = true;
+  }
+
+  function onblur(e: FocusEvent) {
+    e.preventDefault();
+    isFocused = false;
   }
 </script>
 
