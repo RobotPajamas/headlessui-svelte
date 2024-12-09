@@ -23,7 +23,7 @@
 // https://github.com/tailwindlabs/headlessui
 // https://github.com/tailwindlabs/headlessui/blob/d71fb9cd2e12f5a48617b26e6bb3db90b3e07965/packages/%40headlessui-react/src/test-utils/accessibility-assertions.ts
 
-import { FocusableMode, isFocusableElement } from "../utils/focus-management";
+import { FocusableMode, isFocusableElement } from "$lib/internal/utils/focus-management";
 
 function assertNever(x: never): never {
   throw new Error("Unexpected object: " + x);

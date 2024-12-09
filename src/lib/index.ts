@@ -1,9 +1,9 @@
-export * from "./button/Button.svelte";
-export * from "./checkbox/Checkbox.svelte";
-export * from "./field/Field.svelte";
-export * from "./fieldset/Fieldset.svelte";
-export * from "./fragment/Fragment.svelte";
-export * from "./input/Input.svelte";
-export * from "./label/Label.svelte";
-export * from "./legend/Legend.svelte";
-export * from "./switch/Switch.svelte";
+export { default as Button } from "./button/Button.svelte";
+export { default as Checkbox } from "./checkbox/Checkbox.svelte";
+export { default as Field } from "./field/Field.svelte";
+export { default as Fieldset } from "./fieldset/Fieldset.svelte";
+export { default as Fragment } from "./fragment/Fragment.svelte";
+export { default as Input } from "./input/Input.svelte";
+export { default as Label } from "./label/Label.svelte";
+export { default as Legend } from "./legend/Legend.svelte";
+export { default as Switch } from "./switch/Switch.svelte";
