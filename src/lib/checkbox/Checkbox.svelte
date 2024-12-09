@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Component, Snippet } from "svelte";
   import { useId } from "../../hooks/use-id";
+  import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
 
   type Props = {
     /** The element or component the checkbox should render as. */
@@ -54,7 +55,7 @@
     as = "span",
     autofocus = false,
     checked = false,
-    disabled = false,
+    disabled = useDisabled() || false,
     indeterminate = false,
     children,
     ...theirProps

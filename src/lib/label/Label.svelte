@@ -2,6 +2,7 @@
   import { type Component, onMount, type Snippet } from "svelte";
   import { useId } from "../../hooks/use-id";
   import { useLabelContext } from "./LabelProvider.svelte";
+  import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
 
   type Props = {
     /** The element or component the input should render as. */
@@ -40,7 +41,7 @@
     onclick,
   });
 
-  let disabled = false;
+  let disabled = useDisabled() || false;
 
   let snippetProps: SnippetProps = $derived({
     disabled,

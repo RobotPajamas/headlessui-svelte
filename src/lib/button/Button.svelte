@@ -1,5 +1,6 @@
 <script lang="ts">
   import { type Component, type Snippet } from "svelte";
+  import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
 
   type Props = {
     /** The element or component the button should render as. */
@@ -30,7 +31,7 @@
   let {
     as = "button",
     autofocus = false,
-    disabled = false,
+    disabled = useDisabled() || false,
     type = "button",
     children,
     ...theirProps

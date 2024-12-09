@@ -2,6 +2,7 @@
   import { type Component, getContext, setContext, type Snippet } from "svelte";
   import { useId } from "../../hooks/use-id";
   import LabelProvider from "$lib/label/LabelProvider.svelte";
+  import DisabledProvider, { useDisabled } from "$lib/internal/DisabledProvider.svelte";
 
   type Props = {
     /** The element or component the checkbox should render as. */
@@ -15,7 +16,8 @@
     /** Whether or not the field is disabled. */
     disabled?: boolean;
   };
-  let providedDisabled = getContext<boolean>("headlessui-disabled-context");
+
+  let providedDisabled = useDisabled();
 
   let {
     id = `headlessui-control-${useId()}`,
@@ -26,8 +28,8 @@
   }: Props & Record<string, any> = $props();
 
   let ourProps = $derived({
-    disabled,
-    "aria-disabled": disabled,
+    disabled: disabled || undefined,
+    "aria-disabled": disabled || undefined,
   });
 
   let snippetProps: SnippetProps = $derived({
@@ -38,19 +40,24 @@
   let dataAttributes: DataAttributes<SnippetProps> = $derived({
     "data-disabled": disabled || undefined,
   });
-
-  setContext("headlessui-disabled-context", disabled);
 </script>
 
-<LabelProvider name="FieldLabel">
-  {#if typeof as === "string"}
-    <svelte:element this={as} {...theirProps} {...ourProps} {...dataAttributes}>
-      {@render children?.(snippetProps)}
-    </svelte:element>
-  {:else}
-    {@const AsComponent = as}
-    <AsComponent {...theirProps} {...ourProps} {...dataAttributes}>
-      {@render children?.(snippetProps)}
-    </AsComponent>
-  {/if}
-</LabelProvider>
+<DisabledProvider {disabled}>
+  <LabelProvider name="FieldLabel">
+    {#if typeof as === "string"}
+      <svelte:element
+        this={as}
+        {...theirProps}
+        {...ourProps}
+        {...dataAttributes}
+      >
+        {@render children?.(snippetProps)}
+      </svelte:element>
+    {:else}
+      {@const AsComponent = as}
+      <AsComponent {...theirProps} {...ourProps} {...dataAttributes}>
+        {@render children?.(snippetProps)}
+      </AsComponent>
+    {/if}
+  </LabelProvider>
+</DisabledProvider>

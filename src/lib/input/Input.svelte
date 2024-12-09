@@ -2,6 +2,7 @@
   import { type Component, type Snippet } from "svelte";
   import { useId } from "../../hooks/use-id";
   import { useLabelledBy } from "$lib/label/LabelProvider.svelte";
+  import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
 
   type Props = {
     /** The element or component the input should render as. */
@@ -32,7 +33,7 @@
     id = `headlessui-input-${useId()}`,
     as = "input",
     autofocus = false,
-    disabled = false,
+    disabled = useDisabled() || false,
     invalid = false,
     children,
     ...theirProps

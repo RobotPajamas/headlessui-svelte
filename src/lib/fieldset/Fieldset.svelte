@@ -1,6 +1,7 @@
 <script lang="ts">
   import { type Component, getContext, setContext, type Snippet } from "svelte";
   import LabelProvider from "$lib/label/LabelProvider.svelte";
+  import DisabledProvider, { useDisabled } from "$lib/internal/DisabledProvider.svelte";
 
   type Props = {
     /** The element or component the fieldset should render as. */
@@ -15,7 +16,7 @@
     disabled?: boolean;
   };
 
-  let providedDisabled = getContext<boolean>("headlessui-disabled-context");
+  let providedDisabled = useDisabled();
 
   let {
     as = "fieldset",
@@ -38,31 +39,32 @@
   let dataAttributes: DataAttributes<SnippetProps> = $derived({
     "data-disabled": disabled || undefined,
   });
-  setContext("headlessui-disabled-context", disabled);
 </script>
 
-<LabelProvider name="FieldsetLabel">
-  {#snippet labelledBy({ labelIds })}
-    {#if typeof as === "string"}
-      <svelte:element
-        this={as}
-        {...theirProps}
-        {...ourProps}
-        {...dataAttributes}
-        aria-labelledby={labelIds[0]}
-      >
-        {@render children?.(snippetProps)}
-      </svelte:element>
-    {:else}
-      {@const AsComponent = as}
-      <AsComponent
-        {...theirProps}
-        {...ourProps}
-        {...dataAttributes}
-        aria-labelledby={labelIds}
-      >
-        {@render children?.(snippetProps)}
-      </AsComponent>
-    {/if}
-  {/snippet}
-</LabelProvider>
+<DisabledProvider {disabled}>
+  <LabelProvider name="FieldsetLabel">
+    {#snippet labelledBy({ labelIds })}
+      {#if typeof as === "string"}
+        <svelte:element
+          this={as}
+          {...theirProps}
+          {...ourProps}
+          {...dataAttributes}
+          aria-labelledby={labelIds[0]}
+        >
+          {@render children?.(snippetProps)}
+        </svelte:element>
+      {:else}
+        {@const AsComponent = as}
+        <AsComponent
+          {...theirProps}
+          {...ourProps}
+          {...dataAttributes}
+          aria-labelledby={labelIds}
+        >
+          {@render children?.(snippetProps)}
+        </AsComponent>
+      {/if}
+    {/snippet}
+  </LabelProvider>
+</DisabledProvider>

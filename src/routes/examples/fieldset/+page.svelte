@@ -7,7 +7,7 @@
 </script>
 
 <div class="w-full max-w-lg px-4">
-  <Fieldset class="space-y-6 rounded-xl bg-white/5 p-6 sm:p-10">
+  <Fieldset class="space-y-6 rounded-xl bg-white/5 p-6 sm:p-10" disabled>
     <Legend class="text-base/7 font-semibold text-white">Shipping details</Legend>
     <Field>
       <Label class="text-sm/6 font-medium text-white">Street address</Label>
