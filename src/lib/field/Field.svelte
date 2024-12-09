@@ -1,11 +1,7 @@
 <script lang="ts">
-  import type { Component, Snippet } from "svelte";
+  import { type Component, getContext, setContext, type Snippet } from "svelte";
   import { useId } from "../../hooks/use-id";
-  import LabelProvider, {
-    useLabelContext,
-    useLabelledBy,
-  } from "$lib/label/LabelProvider.svelte";
-  import { getAllContexts, getContext, setContext } from "svelte";
+  import LabelProvider from "$lib/label/LabelProvider.svelte";
 
   type Props = {
     /** The element or component the checkbox should render as. */

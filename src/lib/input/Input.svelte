@@ -1,11 +1,7 @@
 <script lang="ts">
-  import { type Component, getAllContexts, getContext, onMount, type Snippet } from "svelte";
+  import { type Component, type Snippet } from "svelte";
   import { useId } from "../../hooks/use-id";
-  import {
-    LABEL_CONTEXT_NAME,
-    LabelContext,
-    useLabelledBy,
-  } from "$lib/label/LabelProvider.svelte";
+  import { useLabelledBy } from "$lib/label/LabelProvider.svelte";
 
   type Props = {
     /** The element or component the input should render as. */

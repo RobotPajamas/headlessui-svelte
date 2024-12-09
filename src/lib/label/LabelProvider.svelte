@@ -23,7 +23,6 @@
     alwaysAvailableIds?: (string | undefined | null)[],
   ): string | undefined {
     const context = getContext<LabelContext>(LABEL_CONTEXT_NAME);
-    console.log("useLabelledBy context is ", context);
     // if ((alwaysAvailableIds?.length ?? 0) > 0) {
     //     return [labelIds, ...alwaysAvailableIds!].filter(Boolean).join(" ");
     // }

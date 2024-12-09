@@ -32,11 +32,7 @@
   }
 
   let labelContext = useLabelContext();
-  console.log("Label onLoad, context: ", labelContext);
-  onMount(() => {
-    labelContext.register(id);
-    console.log("Label onMount, register id: ", id, labelContext);
-  });
+  onMount(() => labelContext.register(id));
 
   let ourProps = $derived({
     id,

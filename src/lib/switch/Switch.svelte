@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Component, Snippet } from "svelte";
-  import {} from "svelte/compiler";
   import { resolveButtonType } from "../../utils/resolve-button-type";
   import { useId } from "../../hooks/use-id";
 

@@ -1,9 +1,6 @@
 <script lang="ts">
-  import { type Component, getContext, onMount, setContext, type Snippet } from "svelte";
-  import LabelProvider, {
-    useLabelContext,
-    useLabelledBy,
-  } from "$lib/label/LabelProvider.svelte";
+  import { type Component, getContext, setContext, type Snippet } from "svelte";
+  import LabelProvider from "$lib/label/LabelProvider.svelte";
 
   type Props = {
     /** The element or component the fieldset should render as. */
