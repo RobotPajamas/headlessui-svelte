@@ -26,7 +26,7 @@ The target compatibility for the components below is based on [HeadlessUI React 
 
 ### Forms
 
-- [/] Button
+- [ ] Button
 - [ ] Checkbox
 - [ ] Combobox
 - [ ] Description

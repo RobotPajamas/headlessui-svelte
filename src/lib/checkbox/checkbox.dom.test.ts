@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/svelte";
 import { getCheckbox } from "../../test-utils/accessibility-assertions";
 import type { SvelteComponent } from "svelte";
-import { commonRenderingScenarios } from "../../test-utils/scenarios";
+import { commonControlScenarios, commonRenderingScenarios } from "../../test-utils/scenarios.dom";
 import Checkbox from "./Checkbox.svelte";
 
 function sveltify(input: string): Promise<typeof SvelteComponent> {
@@ -9,7 +9,7 @@ function sveltify(input: string): Promise<typeof SvelteComponent> {
 }
 
 commonRenderingScenarios(Checkbox, { getElement: getCheckbox });
-describe.skip("commonControlScenarios", () => {});
+commonControlScenarios(Checkbox);
 describe.skip("commonFormScenarios", () => {});
 
 // describe.each([

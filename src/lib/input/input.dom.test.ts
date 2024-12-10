@@ -1,7 +1,7 @@
 import { getInput } from "../../test-utils/accessibility-assertions";
 import Input from "./Input.svelte";
-import { commonRenderingScenarios } from "../../test-utils/scenarios";
+import { commonControlScenarios, commonRenderingScenarios } from "../../test-utils/scenarios.dom";
 
 commonRenderingScenarios(Input, { getElement: getInput });
-describe.skip("commonControlScenarios", () => {});
+commonControlScenarios(Input);
 describe.skip("commonFormScenarios", () => {});
