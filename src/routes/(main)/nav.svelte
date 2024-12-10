@@ -1,5 +1,5 @@
 <script lang="ts">
-  const components = ["button", "checkbox", "fieldset", "input", "switch", "textarea"];
+  const components = ["button", "checkbox", "fieldset", "input", "select", "switch", "textarea"];
 </script>
 
 <nav>
