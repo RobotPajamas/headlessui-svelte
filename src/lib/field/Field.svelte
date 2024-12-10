@@ -3,6 +3,7 @@
   import { useId } from "$lib/internal/hooks/use-id";
   import LabelProvider from "$lib/label/LabelProvider.svelte";
   import DisabledProvider, { useDisabled } from "$lib/internal/DisabledProvider.svelte";
+  import DescriptionProvider from "$lib/description/DescriptionProvider.svelte";
 
   type Props = {
     /** The element or component the checkbox should render as. */
@@ -44,20 +45,22 @@
 
 <DisabledProvider {disabled}>
   <LabelProvider name="FieldLabel">
-    {#if typeof as === "string"}
-      <svelte:element
-        this={as}
-        {...theirProps}
-        {...ourProps}
-        {...dataAttributes}
-      >
-        {@render children?.(snippetProps)}
-      </svelte:element>
-    {:else}
-      {@const AsComponent = as}
-      <AsComponent {...theirProps} {...ourProps} {...dataAttributes}>
-        {@render children?.(snippetProps)}
-      </AsComponent>
-    {/if}
+    <DescriptionProvider name="FieldDescription">
+      {#if typeof as === "string"}
+        <svelte:element
+          this={as}
+          {...theirProps}
+          {...ourProps}
+          {...dataAttributes}
+        >
+          {@render children?.(snippetProps)}
+        </svelte:element>
+      {:else}
+        {@const AsComponent = as}
+        <AsComponent {...theirProps} {...ourProps} {...dataAttributes}>
+          {@render children?.(snippetProps)}
+        </AsComponent>
+      {/if}
+    </DescriptionProvider>
   </LabelProvider>
 </DisabledProvider>

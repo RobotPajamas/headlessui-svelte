@@ -12,7 +12,7 @@ commonControlScenarios(Select);
 commonFormScenarios(Select, {
   async performUserInteraction(control) {
     if (control instanceof HTMLSelectElement) {
-        control.value = 'alice'
-      }
+      control.value = "alice";
+    }
   },
 });
