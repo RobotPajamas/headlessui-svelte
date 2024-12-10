@@ -1,8 +1,9 @@
 <script lang="ts">
   import { type Component, type Snippet } from "svelte";
   import { useId } from "$lib/internal/hooks/use-id";
-  import { useLabelledBy } from "$lib/label/LabelProvider.svelte";
+  import { useDescribedBy } from "$lib/description/DescriptionProvider.svelte";
   import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
+  import { useLabelledBy } from "$lib/label/LabelProvider.svelte";
 
   type Props = {
     /** The element or component the select should render as. */
@@ -41,15 +42,16 @@
     ...theirProps
   }: Props & Record<string, any> = $props();
 
+  let describedBy = $derived(useDescribedBy());
   let labelledBy = $derived(useLabelledBy());
 
   let ourProps = $derived({
     id,
     autofocus,
     disabled,
+    "aria-describedby": describedBy,
     "aria-invalid": invalid, // ? "" : undefined,
-    "aria-labelledby": labelledBy?.[0],
-    // "aria-describedby": describedBy,
+    "aria-labelledby": labelledBy,
   });
 
   let snippetProps: SnippetProps = $derived({

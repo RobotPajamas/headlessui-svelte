@@ -2,7 +2,9 @@
   import type { Component, Snippet } from "svelte";
   import { resolveButtonType } from "$lib/internal/utils/resolve-button-type";
   import { useId } from "$lib/internal/hooks/use-id";
+  import { useDescribedBy } from "$lib/description/DescriptionProvider.svelte";
   import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
+  import { useLabelledBy } from "$lib/label/LabelProvider.svelte";
 
   type Props = {
     /** The element or component the Switch should render as. */
@@ -80,6 +82,9 @@
     e.preventDefault();
   }
 
+  let describedBy = $derived(useDescribedBy());
+  let labelledBy = $derived(useLabelledBy());
+
   let ourProps = $derived({
     id,
     role: "switch",
@@ -87,8 +92,8 @@
     type: resolveButtonType({ type, as }),
     "aria-checked": checked,
     // TODO: these
-    // "aria-labelledby": labelledBy,
-    // "aria-describedby": describedBy,
+    "aria-labelledby": labelledBy,
+    "aria-describedby": describedBy,
     // autoFocus,
     // TODO: Should these functions be pulled out of the 'derived' block?
     onclick,

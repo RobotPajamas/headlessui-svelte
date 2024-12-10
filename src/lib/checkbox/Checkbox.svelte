@@ -2,6 +2,8 @@
   import type { Component, Snippet } from "svelte";
   import { useId } from "$lib/internal/hooks/use-id";
   import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
+  import { useDescribedBy } from "$lib/description/DescriptionProvider.svelte";
+  import { useLabelledBy } from "$lib/label/LabelProvider.svelte";
 
   type Props = {
     /** The element or component the checkbox should render as. */
@@ -70,6 +72,9 @@
     toggle();
   }
 
+  let describedBy = $derived(useDescribedBy());
+  let labelledBy = $derived(useLabelledBy());
+
   let ourProps = $derived({
     id,
     autofocus,
@@ -77,8 +82,8 @@
     role: "checkbox",
     "aria-checked": checked,
     // "aria-invalid": invalid, // ? "" : undefined,
-    // "aria-labelledby": labelledBy,
-    // "aria-describedby": describedBy,
+    "aria-labelledby": labelledBy,
+    "aria-describedby": describedBy,
     onclick,
   });
 

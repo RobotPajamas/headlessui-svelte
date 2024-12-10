@@ -1,6 +1,7 @@
 <script lang="ts">
   import { type Component, type Snippet } from "svelte";
   import { useId } from "$lib/internal/hooks/use-id";
+  import { useDescribedBy } from "$lib/description/DescriptionProvider.svelte";
   import { useLabelledBy } from "$lib/label/LabelProvider.svelte";
   import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
 
@@ -40,15 +41,16 @@
   }: Props & Record<string, any> = $props();
 
   // TODO: This feels soooo janky, this can't be the runes-way...
+  let describedBy = $derived(useDescribedBy());
   let labelledBy = $derived(useLabelledBy());
 
   let ourProps = $derived({
     id,
     autofocus,
     disabled,
+    "aria-describedby": describedBy,
     "aria-invalid": invalid, // ? "" : undefined,
-    "aria-labelledby": labelledBy?.[0],
-    // "aria-describedby": describedBy,
+    "aria-labelledby": labelledBy,
   });
 
   let snippetProps: SnippetProps = $derived({
@@ -63,8 +65,8 @@
   let dataAttributes: DataAttributes<SnippetProps> = $derived({
     "data-autofocus": autofocus || undefined,
     "data-disabled": disabled || undefined,
-    "data-focus": invalid || undefined,
-    "data-hover": invalid || undefined,
+    "data-focus": invalid || undefined, // TODO
+    "data-hover": invalid || undefined, // TODO
     "data-invalid": invalid || undefined,
   });
 </script>
