@@ -61,7 +61,7 @@ function sveltify(): Plugin {
 
     transform(code, id, options) {
       // Pull this searchString out into an option
-      if (!id.endsWith(".dom.test.ts")) {
+      if (!id.endsWith(".dom.test.ts") && !id.endsWith(".dom.ts")) {
         return null;
       }
 
