@@ -18,7 +18,7 @@ npm install @robotpajamas/headlessui-svelte
 
 ## Documentation
 
-Full documenation and examples will eventually live at [headlessui-svelte.com](headlessui-svelte.com)
+Full documenation and examples will eventually live at [headlessui-svelte.com](https://headlessui-svelte.com)
 
 ## Progress
 

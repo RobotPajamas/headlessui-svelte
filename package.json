@@ -1,6 +1,6 @@
 {
   "name": "@robotpajamas/headlessui-svelte",
-  "version": "2.2.0-beta.1",
+  "version": "2.2.0-beta.2",
   "description": "An unofficial port of the HeadlessUI component library to Svelte 5+.",
   "homepage": "https://headlessui-svelte.com",
   "license": "MIT",

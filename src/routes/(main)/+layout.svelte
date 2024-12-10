@@ -7,7 +7,7 @@
 
 <div>
   <div class="relative">
-    <header class="relative px-4 sm:px-6">
+    <header class="relative px-4 sm:px-6 bg-black/80">
       <div class="mx-auto flex max-w-7xl items-center justify-between py-6 px-2">
         <span><!-- Logo Placeholder --></span>
         <a
