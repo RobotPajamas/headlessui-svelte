@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { page } from "$app/stores";
-  const components = ["button", "checkbox", "fieldset", "input", "switch"];
+  const components = ["button", "checkbox", "fieldset", "input", "switch", "textarea"];
 </script>
 
 <nav>

@@ -1,51 +1,14 @@
 import { render, screen } from "@testing-library/svelte";
 import { getCheckbox } from "../../test-utils/accessibility-assertions";
 import type { SvelteComponent } from "svelte";
+import { commonRenderingScenarios } from "../../test-utils/scenarios";
+import Checkbox from "./Checkbox.svelte";
 
 function sveltify(input: string): Promise<typeof SvelteComponent> {
   throw new Error("TODO");
 }
 
-// TODO: Manually unrolled test-utils/scenarios.ts commonRenderingScenarios
-
-describe("Rendering", () => {
-  it("should render a checkbox", async () => {
-    const component = await sveltify(`
-      <script>
-          import Checkbox from "$lib/checkbox/Checkbox.svelte";
-      </script>
-      <Checkbox />
-    `);
-    render(component);
-
-    expect(getCheckbox()).toBeInTheDocument();
-  });
-
-  it("should have an `id` attached", async () => {
-    const component = await sveltify(`
-      <script>
-          import Checkbox from "$lib/checkbox/Checkbox.svelte";
-      </script>
-      <Checkbox />
-    `);
-    render(component);
-
-    expect(getCheckbox()).toHaveAttribute("id");
-  });
-
-  it("should be possible to override the `id`", async () => {
-    const component = await sveltify(`
-      <script>
-          import Checkbox from "$lib/checkbox/Checkbox.svelte";
-      </script>
-      <Checkbox id="foo" />
-    `);
-    render(component);
-
-    expect(getCheckbox()).toHaveAttribute("id", "foo");
-  });
-});
-
+commonRenderingScenarios(Checkbox, { getElement: getCheckbox });
 describe.skip("commonControlScenarios", () => {});
 describe.skip("commonFormScenarios", () => {});
 

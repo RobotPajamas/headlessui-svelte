@@ -7,3 +7,4 @@ export { default as Input } from "./input/Input.svelte";
 export { default as Label } from "./label/Label.svelte";
 export { default as Legend } from "./legend/Legend.svelte";
 export { default as Switch } from "./switch/Switch.svelte";
+export { default as Textarea } from "./textarea/Textarea.svelte";

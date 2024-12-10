@@ -308,27 +308,34 @@
 //   })
 // }
 
-// export function commonRenderingScenarios(
-//   Control: React.ComponentType<any>,
-//   { getElement }: { getElement: () => HTMLElement | null }
-// ) {
-//   describe('Rendering', () => {
-//     it('should render a control', async () => {
-//       render(<Control />)
+import { render, screen } from "@testing-library/svelte";
+import type { Component, SvelteComponent } from "svelte";
 
-//       expect(getElement()).toBeInTheDocument()
-//     })
+function sveltify(input: string): Promise<typeof SvelteComponent> {
+  throw new Error("TODO");
+}
 
-//     it('should have an `id` attached', () => {
-//       render(<Control />)
+export function commonRenderingScenarios(
+  Control: Component,
+  { getElement }: { getElement: () => HTMLElement | null },
+) {
+  describe("Rendering", () => {
+    it("should render a control", async () => {
+      render(Control);
 
-//       expect(getElement()).toHaveAttribute('id')
-//     })
+      expect(getElement()).toBeInTheDocument();
+    });
 
-//     it('should be possible to override the `id`', () => {
-//       render(<Control id="foo" />)
+    it("should have an `id` attached", () => {
+      render(Control);
 
-//       expect(getElement()).toHaveAttribute('id', 'foo')
-//     })
-//   })
-// }
+      expect(getElement()).toHaveAttribute("id");
+    });
+
+    it("should be possible to override the `id`", () => {
+      render(Control, { id: "foo" });
+
+      expect(getElement()).toHaveAttribute("id", "foo");
+    });
+  });
+}
