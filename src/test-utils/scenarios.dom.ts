@@ -275,123 +275,132 @@ export function commonControlScenarios(Control: Component) {
   });
 }
 
-// export function commonFormScenarios(
-//   Control: React.ComponentType<any>,
-//   {
-//     performUserInteraction,
-//   }: { performUserInteraction: (control: HTMLElement | null) => PromiseLike<void> }
-// ) {
-//   describe('Form compatibility', () => {
-//     it('should render native (hidden) form elements for the control', () => {
-//       render(
-//         <form>
-//           <Control name="foo" />
-//         </form>
-//       )
+export function commonFormScenarios(
+  Control: Component,
+  {
+    performUserInteraction,
+  }: { performUserInteraction: (control: HTMLElement | null) => PromiseLike<void> },
+) {
+  describe("Form compatibility", () => {
+    it("should render native (hidden) form elements for the control", async () => {
+      const component = await sveltify(`
+        <script>
+          let { Control } = $props()
+        </script>
+        <form>
+          <Control name="foo" />
+        </form>
+      `);
+      render(component, { Control });
 
-//       expect(document.querySelector('[name=foo]')).toBeInTheDocument()
-//     })
+      expect(document.querySelector("[name=foo]")).toBeInTheDocument();
+    });
 
-//     it('should submit the form with all the data', async () => {
-//       let formDataMock = jest.fn()
+    it.skip("should submit the form with all the data", async () => {
+      let formDataMock = vi.fn();
 
-//       render(
-//         <form
-//           onSubmit={(e) => {
-//             e.preventDefault()
-//             formDataMock(new FormData(e.target as HTMLFormElement))
-//           }}
-//         >
-//           <Control name="foo" />
-//           <button>Submit</button>
-//         </form>
-//       )
+      const component = await sveltify(`
+        <script>
+          let { Control } = $props()
+        </script>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault()
+            formDataMock(new FormData(e.target as HTMLFormElement))
+          }}
+        >
+          <Control name="foo" />
+          <button>Submit</button>
+        </form>
+      `);
+      render(component, { Control });
 
-//       // Submit form
-//       await click(screen.getByText('Submit'))
+      // Submit form
+      await click(screen.getByText("Submit"));
 
-//       // Ensure the form was submitted with the `foo` input present
-//       expect(formDataMock.mock.calls[0][0].has('foo')).toBe(true)
-//     })
+      // Ensure the form was submitted with the `foo` input present
+      expect(formDataMock.mock.calls[0][0].has("foo")).toBe(true);
+    });
 
-//     it('should not submit the data if the control is disabled', async () => {
-//       let submits = jest.fn()
+    it.skip("should not submit the data if the control is disabled", async () => {
+      let submits = vi.fn();
 
-//       function Example() {
-//         return (
-//           <form
-//             onSubmit={(event) => {
-//               event.preventDefault()
-//               submits([...new FormData(event.currentTarget).entries()])
-//             }}
-//           >
-//             <input type="hidden" name="foo" value="bar" />
-//             <Control name="bar" disabled />
-//             <button>Submit</button>
-//           </form>
-//         )
-//       }
+      const component = await sveltify(`
+        <script>
+          let { Control } = $props()
+        </script>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault()
+            submits([...new FormData(event.currentTarget).entries()])
+          }}
+        >
+          <input type="hidden" name="foo" value="bar" />
+          <Control name="bar" disabled />
+          <button>Submit</button>
+        </form>
+      `);
+      render(component, { Control });
 
-//       render(<Example />)
+      // Submit the form
+      await click(screen.getByText("Submit"));
 
-//       // Submit the form
-//       await click(screen.getByText('Submit'))
+      // Verify that the form has been submitted
+      expect(submits).toHaveBeenLastCalledWith([
+        ["foo", "bar"], // The only available field
+      ]);
+    });
 
-//       // Verify that the form has been submitted
-//       expect(submits).toHaveBeenLastCalledWith([
-//         ['foo', 'bar'], // The only available field
-//       ])
-//     })
+    it.skip("should reset the control when the form is reset", async () => {
+      let formDataMock = vi.fn();
 
-//     it(
-//       'should reset the control when the form is reset',
-//       suppressConsoleLogs(async () => {
-//         let formDataMock = jest.fn()
+      const component = await sveltify(`
+          <script>
+            let { Control } = $props()
+          </script>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault()
+              formDataMock(new FormData(e.target as HTMLFormElement))
+            }}
+          >
+            <Field>
+              <Label>The Label</Label>
+              <Control name="foo" />
+            </Field>
 
-//         render(
-//           <form
-//             onSubmit={(e) => {
-//               e.preventDefault()
-//               formDataMock(new FormData(e.target as HTMLFormElement))
-//             }}
-//           >
-//             <Field>
-//               <Label>The Label</Label>
-//               <Control name="foo" />
-//             </Field>
+            <button>Submit</button>
+            <button type="reset">Reset</button>
+          </form>
+        `);
+      render(component, { Control });
 
-//             <button>Submit</button>
-//             <button type="reset">Reset</button>
-//           </form>
-//         )
+      // Submit the form to get the initial state of the form
+      await click(screen.getByText("Submit"));
+      let formState = Object.fromEntries(formDataMock.mock.calls[0][0]);
 
-//         // Submit the form to get the initial state of the form
-//         await click(screen.getByText('Submit'))
-//         let formState = Object.fromEntries(formDataMock.mock.calls[0][0])
+      // Make changes to the control
+      await performUserInteraction(getControl());
 
-//         // Make changes to the control
-//         await performUserInteraction(getControl())
+      // Submit form
+      await click(screen.getByText("Submit"));
 
-//         // Submit form
-//         await click(screen.getByText('Submit'))
+      // Ensure the form was, and the values are different
+      let newFormState = Object.fromEntries(formDataMock.mock.calls[1][0]);
+      expect(newFormState).not.toEqual(formState);
 
-//         // Ensure the form was, and the values are different
-//         let newFormState = Object.fromEntries(formDataMock.mock.calls[1][0])
-//         expect(newFormState).not.toEqual(formState)
+      // Reset the form
+      await click(screen.getByText("Reset"));
 
-//         // Reset the form
-//         await click(screen.getByText('Reset'))
+      // Ensure the form was reset
+      await click(screen.getByText("Submit"));
 
-//         // Ensure the form was reset
-//         await click(screen.getByText('Submit'))
-
-//         // Ensure the form state looks like the initial state
-//         let resetFormState = Object.fromEntries(formDataMock.mock.calls[2][0])
-//         expect(resetFormState).toEqual(formState)
-//       })
-//     )
-//   })
-// }
+      // Ensure the form state looks like the initial state
+      let resetFormState = Object.fromEntries(formDataMock.mock.calls[2][0]);
+      expect(resetFormState).toEqual(formState);
+    });
+  });
+}
 
 export function commonRenderingScenarios(
   Control: Component,

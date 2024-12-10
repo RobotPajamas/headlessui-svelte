@@ -1,7 +1,17 @@
-import { getInput } from "../../test-utils/accessibility-assertions";
 import Input from "./Input.svelte";
-import { commonControlScenarios, commonRenderingScenarios } from "../../test-utils/scenarios.dom";
+import { getInput } from "../../test-utils/accessibility-assertions";
+import { focus, type, word } from "../../test-utils/interactions";
+import {
+  commonControlScenarios,
+  commonFormScenarios,
+  commonRenderingScenarios,
+} from "../../test-utils/scenarios.dom";
 
 commonRenderingScenarios(Input, { getElement: getInput });
 commonControlScenarios(Input);
-describe.skip("commonFormScenarios", () => {});
+commonFormScenarios(Input, {
+  async performUserInteraction(input) {
+    await focus(input);
+    await type(word("alice"));
+  },
+});

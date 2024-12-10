@@ -1,8 +1,13 @@
-import { render, screen } from "@testing-library/svelte";
-import { getCheckbox } from "../../test-utils/accessibility-assertions";
-import type { SvelteComponent } from "svelte";
-import { commonControlScenarios, commonRenderingScenarios } from "../../test-utils/scenarios.dom";
 import Checkbox from "./Checkbox.svelte";
+import { getCheckbox } from "../../test-utils/accessibility-assertions";
+import { click } from "../../test-utils/interactions";
+import {
+  commonControlScenarios,
+  commonFormScenarios,
+  commonRenderingScenarios,
+} from "../../test-utils/scenarios.dom";
+import { render, screen } from "@testing-library/svelte";
+import type { SvelteComponent } from "svelte";
 
 function sveltify(input: string): Promise<typeof SvelteComponent> {
   throw new Error("TODO");
@@ -10,7 +15,11 @@ function sveltify(input: string): Promise<typeof SvelteComponent> {
 
 commonRenderingScenarios(Checkbox, { getElement: getCheckbox });
 commonControlScenarios(Checkbox);
-describe.skip("commonFormScenarios", () => {});
+commonFormScenarios(Checkbox, {
+  async performUserInteraction(control) {
+    await click(control);
+  },
+});
 
 // describe.each([
 //   [
