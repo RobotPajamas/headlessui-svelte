@@ -4,6 +4,7 @@
     "checkbox",
     "fieldset",
     "input",
+    "listbox",
     "select",
     "switch",
     "textarea",
