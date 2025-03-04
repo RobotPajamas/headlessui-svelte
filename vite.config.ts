@@ -13,8 +13,8 @@ export default defineConfig({
   },
   test: {
     // TODO: happy-dom is not working, but jsdom is (https://github.com/sveltejs/svelte/issues/10358)
-    environment: "jsdom", // This can probably be `node`, but getLocalStorageItem is infiltrating the tests
-    environmentMatchGlobs: [["**/*.dom.test.{js,ts}", "jsdom"]],
+    environment: "happy-dom", // This can probably be `node`, but getLocalStorageItem is infiltrating the tests
+    environmentMatchGlobs: [["**/*.dom.test.{js,ts}", "happy-dom"]],
     globals: true,
     include: [
       "src/**/*.{test,spec}.{js,ts}",
