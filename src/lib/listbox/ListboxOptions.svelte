@@ -58,6 +58,19 @@
     /** Whether or not the listbox is open. */
     open?: boolean;
   };
+
+  let { children, ...theirProps }: Props & Record<string, any> = $props();
+
+  let snippetProps: SnippetProps = $derived({
+    open: false,
+  });
+
+  // TODO: Utility function to create this
+  let dataAttributes: DataAttributes<SnippetProps> = $derived({
+    "data-open": false || undefined,
+  });
 </script>
 
-<div></div>
+<div>
+  {@render children?.(snippetProps)}
+</div>

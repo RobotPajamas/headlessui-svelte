@@ -10,5 +10,3 @@
     options?: Node[];
   };
 </script>
-
-<div></div>

@@ -21,6 +21,25 @@
     /** Whether or not the listbox option is a child of `ListboxSelectedOption`. */
     selectedOption?: boolean;
   };
+
+  let { value, children, ...theirProps }: Props & Record<string, any> = $props();
+
+  let snippetProps: SnippetProps = $derived({
+    disabled: false,
+    focus: false,
+    selected: false,
+    selectedOption: false,
+  });
+
+  // TODO: Utility function to create this
+  let dataAttributes: DataAttributes<SnippetProps> = $derived({
+    "data-disabled": false || undefined,
+    "data-focus": false || undefined,
+    "data-selected": false || undefined,
+    "data-selectedOption": false || undefined,
+  });
 </script>
 
-<div></div>
+<div>
+  {@render children?.(snippetProps)}
+</div>

@@ -67,9 +67,13 @@
               clip-rule="evenodd"
             />
           </svg>
-          <div class="text-sm/6 text-white">{person.name}</div>
+          <div class="text-sm/6 text-white">
+            {person.name}
+          </div>
         </ListboxOption>
       {/each}
     </ListboxOptions>
   </Listbox>
 </div>
+
+k

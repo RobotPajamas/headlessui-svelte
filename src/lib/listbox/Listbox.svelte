@@ -1,5 +1,8 @@
 <script lang="ts">
-  import type { Snippet } from "svelte";
+  import Fragment from "$lib/fragment/Fragment.svelte";
+  import { useDisabled } from "$lib/internal/DisabledProvider.svelte";
+  import { useLabelledBy } from "$lib/label/LabelProvider.svelte";
+  import type { Component, Snippet } from "svelte";
 
   // enum ListboxStates {
   //   Open,
@@ -19,14 +22,6 @@
   type Props = {
     /** The element or component the listbox should render as. */
     as?: string | Component;
-    /** Use this to disable the entire Listbox component & related children. */
-    disabled?: boolean;
-    /** Whether or not the listbox is invalid. */
-    invalid?: boolean;
-    /** The selected value. (TODO: make `T`) */
-    value: string;
-    /** The default value when using as an uncontrolled component. (TODO: make `T`) */
-    defaultValue: string;
     /**
      * Use this to compare objects by a particular field, or pass your own comparison
      * function for complete control over how objects are compared.
@@ -34,19 +29,27 @@
      * When you pass an object to the value prop, by will default toid when present.
      */
     by?: string;
-    /** The function to call when a new option is selected. */
-    onChange?: (value: string) => void;
-    /** When true, the orientation of the ListboxOptions will be horizontal, otherwise it will be vertical. */
-    horizontal?: boolean;
-    /** Whether multiple options can be selected or not. */
-    multiple?: boolean;
-    /** The name used when using the listbox inside a form. */
-    name?: string;
+    /** The default value when using as an uncontrolled component. (TODO: make `T`) */
+    defaultValue?: string;
+    /** Use this to disable the entire Listbox component & related children. */
+    disabled?: boolean;
     /**
      * The id of the form that the listbox belongs to.
      * If `name` is provided but `form` is not, the listbox will add its state to the nearest ancestor `form` element.
      */
     form?: string;
+    /** When true, the orientation of the ListboxOptions will be horizontal, otherwise it will be vertical. */
+    horizontal?: boolean;
+    /** Whether or not the listbox is invalid. */
+    invalid?: boolean;
+    /** Whether multiple options can be selected or not. */
+    multiple?: boolean;
+    /** The name used when using the listbox inside a form. */
+    name?: string;
+    /** The function to call when a new option is selected. */
+    onchange?: (value: string) => void;
+    /** The selected value. (TODO: make `T`) */
+    value: string;
     children?: Snippet<[SnippetProps]>;
   };
 
@@ -62,22 +65,30 @@
   };
 
   let {
-    id = `headlessui-select-${useId()}`,
-    as = "select",
+    as = Fragment,
     autofocus = false,
+    by,
+    defaultValue,
     disabled = useDisabled() || false,
+    form,
+    horizontal = false,
     invalid = false,
+    multiple = false,
+    name,
+    onchange,
+    value,
     children,
     ...theirProps
   }: Props & Record<string, any> = $props();
 
+  const orientation = horizontal ? "horizontal" : "vertical";
+
   let labelledBy = $derived(useLabelledBy());
 
   let ourProps = $derived({
-    id,
     autofocus,
     disabled,
-    "aria-describedby": describedBy,
+    // "aria-describedby": describedBy,
     "aria-invalid": invalid, // ? "" : undefined,
     "aria-labelledby": labelledBy,
   });
@@ -92,14 +103,13 @@
 
   // TODO: Utility function to create this
   let dataAttributes: DataAttributes<SnippetProps> = $derived({
-    "data-autofocus": autofocus || undefined,
     "data-disabled": disabled || undefined,
-    "data-focus": invalid || undefined,
-    "data-hover": invalid || undefined,
     "data-invalid": invalid || undefined,
+    "data-open": autofocus || undefined,
   });
 </script>
 
+Hellosadlkjasdkjsadkljasd
 {#if typeof as === "string"}
   <svelte:element this={as} {...theirProps} {...ourProps} {...dataAttributes}>
     {@render children?.(snippetProps)}
