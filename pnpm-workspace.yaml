@@ -1,0 +1,7 @@
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@types/node"
+  - happy-dom
+overrides:
+  '@babel/runtime@<7.26.10': '>=7.26.10'
+  cookie@<0.7.0: '>=0.7.0'
